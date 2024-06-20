@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="photo.css">
+       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+            <!-- 마우스호버이벤트박스 -->
+            <div id="mouse-cursor">
+                <div id="inner-cursor">More</div>
+            </div>
+    
+            
+<!-- 사이드메뉴 -->
+
+<div class="side-bar">
+    <div class="side-box">TERMS</div>
+    <div class="side-box">T O P</div>
+    <div class="side-box" onclick="location.href='../main/main.html'">MAIN</div>
+</div>
+<div class="terms-description">
+    <div class="des-cancel">close</div>
+    <div class="lang">
+        <div class="lang-title">사용언어</div>
+        <div class="lang-text">Html</div>
+        <div class="lang-text">Css</div>
+        <div class="lang-text">Javascript</div>
+        <div class="lang-text">라이브러리 : 카카오지도</div>
+    </div>
+    <div class="creater">
+        <div class="creater-title">설명</div>
+        <div class="creater-text">제작자 : 서보형</div>
+        <div class="creater-text">제작목적 : 한화이글스 응원 및<br> 자바스크립트 연습</div>
+        <div class="creater-text">이윤추구 : X</div>
+    </div>
+</div>
+
+
+<!-- 메인메뉴 -->
+<header>
+    <div class="main-menu">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="#" class="menu">EAGLES</a>
+                </li>
+                <li>
+                    <a href="#" class="menu">PLAYER</a>
+                </li>
+                <li>
+                    <a href="#" class="menu" onclick="location.href='../gallery/photo.html'">PHOTO</a>
+                </li>
+                <li>
+                    <a href="#" class="menu" onclick="location.href='../comunity/list/list.html'">COMUNITY</a>
+                </li>                        
+            </ul>    
+            <hr class="lines">                
+        </div>
+        <div class="log-in">LOGIN</div>                             
+    </div>          
+</header>
+
+    <!-- 포토섹션 -->
+    <div class="photo-container">
+        <div class="contents-section">
+            <h1 class="contents-logo">HANWHA EAGLES GALERY!</h1>
+            <div class="img-section">
+                <img class="section-img" src="../../project-img/img/slide/slide-photo13.jpg" alt="">
+            </div>
+            <div class="contents-box">
+
+
+            </div>
+        </div>
+        
+        <div class="view-btn">View imgs!</div>
+        <div class="more-btn">More imgs!</div>
+    </div>
+    <div class="overlay"></div>
+  
+    <script src="photo.js"></script>
+</body>
+</html>

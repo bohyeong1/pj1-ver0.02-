@@ -1,0 +1,340 @@
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    width:100vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1vw;
+    font-family: 'SUIT-Regular';
+    background: black;
+}
+
+
+/* 마우스호버이벤트 */
+
+#mouse-cursor{
+    position: absolute;
+    top:0;
+    left:0;
+    pointer-events: none;
+    z-index: 101;
+    border-radius: 50%;
+    display: none;
+  }
+  #inner-cursor{
+    position: relative;
+    width:80px;
+    height:80px;
+    z-index: 102;
+    font-size: 25px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 50%;
+    backdrop-filter: contrast(.2);  
+    --cursor-scale : 1;
+    transform: scale(var(--cursor-scale),var(--cursor-scale));
+    transition: 150ms ease-in-out;
+    color: #ffffff;
+  }
+
+
+/* 메인메뉴 */
+
+/* 사이드메뉴 */
+html{
+    scroll-behavior:smooth;
+}
+.side-bar{
+    position: fixed;
+    right: 10px;
+    bottom : 2vh;
+    width: 80px;
+    height: 200px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    z-index: 98;
+}
+.side-box{
+    width: 95%;
+    height : 60px;
+    line-height:60px;
+    text-align: center;
+    background: #363636;
+    border-radius: 5px;
+    z-index: 99;
+    color: rgb(248, 222, 205);
+}
+.terms-description{
+    position: fixed;
+    right: 3.5vw;
+    bottom: 20vh;
+    width:0vw;
+    height:0vh;
+    background: white;
+    z-index: 97;
+    border-radius:15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:2vh;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.lang,.creater{
+    width:85%;
+    height:40%;
+    border:solid 1px black;
+    border-radius: 15px;
+    color: black;
+    box-sizing: border-box;
+    padding-left: 0.5vw;
+}
+.lang-title, .creater-title{
+    text-align: center;
+    margin-bottom: 0.9vh;
+    font-weight: bold;
+}
+.lang-text,.creater-text{
+    margin-bottom: 0.2vh;
+}
+.des-cancel{
+    position: absolute;
+    top:0;
+    right: 0.4vw;
+    color: black;
+}
+.des-cancel:hover{
+    color: #8b8b8b;
+    transition: 0.5s;
+}
+
+/* 메인메뉴 */
+
+.main-menu{
+    background: black;
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+    position: absolute;
+    top:0;
+    left:0;
+    height:6vh;
+    transition-property: height;
+    transition-duration: 0.1s;
+    z-index: 98;
+}
+.nav{
+    height:100%;
+    position: relative;
+}
+ul{
+    display: flex;
+}
+li{
+    list-style: none;
+    margin-left: 5vw;
+    display: inline-block;
+    height:6vh;
+}
+.menu{
+    color: white;
+    font-weight: bold;    
+    text-decoration: none;
+}
+.log-in{
+    position : relative;
+    right : 6vw;
+    margin-top: 1vw;
+    font-weight: bold;  
+}
+.sub-menu{
+    position: absolute;
+    padding: .5rem 1rem;
+    opacity: 1; 
+    width:100vw;
+    padding: 1rem;
+    color:white;
+    font-weight: bold;
+    bottom: 0;
+  }
+.sub-menu>span:nth-child(1){
+    margin-left:6.2vw;
+    
+}
+.sub-menu>span{
+    margin-right: 3vw;
+}
+.lines{
+    color:white;
+    position:absolute;
+    top:2.5vw;
+    opacity:0;
+    transition: 0.2s;
+    z-index: 2;
+    width: 100vw;
+}
+
+
+
+.menu:hover{
+    color: orange;
+    transition: 0.3s;
+}
+
+#HISTORY:hover,#오시는길:hover,#마스코트:hover,#선수단:hover,#선수기록:hover{
+    color: #32b2b2;
+    transition: 0.3s;
+}
+
+
+
+/* 컨텐츠 */
+.writer-contentBox{
+    width:80vw;
+    height:88vh;
+    background: white;
+    position: relative;
+    top:12.5vh;
+}
+.contentBox-logo{
+    width:100%;
+    height:6vh;
+    border-bottom:solid 3px black;
+    color: orange;
+    font-size: 2vw;
+    padding-left: 0.5vw;
+}
+.contentBox-container{
+    width:100%;
+    height:82vh;
+    /* border-left:solid 3px rgb(177, 177, 177); border-right:solid 3px rgb(177, 177, 177); border-bottom:solid 3px rgb(177, 177, 177); */
+}
+#contentBox-write{
+    width:80%;
+    height:78vh;
+    position: relative;
+    left: 8vw;
+    top: 4vh;
+}
+.write-writer, .write-password{
+    display: inline-block;
+    width: 15vw;
+    height: 3vh;
+    border: solid 2px rgb(146, 146, 146);
+    line-height: 3vh;
+    padding-left: 0.5vw;
+    font-size: 0.8vw;
+}
+.write-title{
+    height: 3vh;
+    border: solid 2px rgb(146, 146, 146);
+    line-height: 3vh;
+    padding-left: 0.5vw;
+    display: block;
+    font-size: 0.8vw;
+    margin-top:1vh; margin-bottom: 1vh;
+}
+.wirte-content{
+    border: solid 2px rgb(146, 146, 146);
+    line-height: 3vh;
+    padding-left: 0.5vw;
+    font-size: 0.8vw;
+    width:98.5%;
+    height:60vh
+}
+.contentBox-write-submit{
+    height: 3vh;
+    width:9vw;
+    position: relative;
+    left:54.7vw;
+    top:1vh;
+    /* border: solid 2px rgb(146, 146, 146); */
+}
+.write-submit{
+    height: 100%;
+    width: 4vw;
+    font-size: 0.8vw;
+    text-align: center;
+    line-height: 3vh;
+    background: rgb(255, 195, 84);
+    /* color: white; */
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+}
+.write-cancel{
+    height: 100%;
+    width: 4vw;
+    font-size: 0.8vw;
+    text-align: center;
+    position: relative;
+    left: 0.8vw;
+    top:-0.1vh;
+    line-height: 3vh;
+    border-radius: 5px;
+    color: black;
+    font-weight: 600;
+    background: rgb(155, 154, 154);
+    display: inline-block;
+}
+.alert-cancel{
+    position: absolute;
+    border: solid 1px orange;
+    width:30vw;
+    height:25vh;
+    background: white;
+    color: black;    
+    text-align: center;
+    display: none;
+}
+.cancel-title{
+    background: orange;
+    width: 100%;
+    height:5vh;
+    color: black;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+    padding-left: 1vw;
+    line-height: 5vh;
+    text-align: left;
+}
+.cancel-container{
+    width: 100%;
+    height:20vh;
+    padding-top: 5vh;
+    box-sizing: border-box;
+    color: black;
+}
+.cancel-confirm, .cancel-cancel{
+    display: inline-block;
+    margin-top: 2vh;
+    width: 5.5vw;
+    height:3vh;
+    line-height: 3vh;
+}
+.cancel-confirm{
+    background: rgb(255, 195, 84);
+}
+.cancel-cancel{
+    background: rgb(155, 154, 154);
+}
+
+
+
+
+
+

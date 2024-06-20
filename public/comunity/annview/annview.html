@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="annview.css">
+ </head>
+<body>
+
+
+        <!-- 마우스호버이벤트박스 -->
+        <div id="mouse-cursor">
+            <div id="inner-cursor">More</div>
+        </div>
+
+        
+<!-- 사이드메뉴 -->
+
+<div class="side-bar">
+    <div class="side-box">TERMS</div>
+    <div class="side-box">T O P</div>
+    <div class="side-box" onclick="location.href='../../main/main.html'">MAIN</div>
+</div>
+<div class="terms-description">
+    <div class="des-cancel">close</div>
+    <div class="lang">
+        <div class="lang-title">사용언어</div>
+        <div class="lang-text">Html</div>
+        <div class="lang-text">Css</div>
+        <div class="lang-text">Javascript</div>
+        <div class="lang-text">라이브러리 : 카카오지도</div>
+    </div>
+    <div class="creater">
+        <div class="creater-title">설명</div>
+        <div class="creater-text">제작자 : 서보형</div>
+        <div class="creater-text">제작목적 : 한화이글스 응원 및<br> 자바스크립트 연습</div>
+        <div class="creater-text">이윤추구 : X</div>
+    </div>
+</div>
+
+
+<!-- 메인메뉴 -->
+<header>
+    <div class="main-menu">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="#" class="menu">EAGLES</a>
+                </li>
+                <li>
+                    <a href="#" class="menu">PLAYER</a>
+                </li>
+                <li>
+                    <a href="#" class="menu" onclick="location.href='../../gallery/photo.html'">PHOTO</a>
+                </li>
+                <li>
+                    <a href="#" class="menu" onclick="location.href='../../comunity/list/list.html'">COMUNITY</a>
+                </li>                        
+            </ul>    
+            <hr class="lines">                
+        </div>
+        <div class="log-in">LOGIN</div>                             
+    </div>          
+</header>
+
+   
+
+
+
+<!-- 메인섹션 -->
+    <div class="view-contentBox">
+        <div class="contentBox-logo">COMUNITY</div>
+
+        <div class="contentBox-title-container">
+            <div class="view-title-title">제목</div>
+            <div class="wrapper1">
+                <div class="view-title-writer">작성자</div>
+                <div class="view-title-date">날짜</div>
+            </div>
+            <div class="wrapper2">
+                <div class="view-title-views">9999</div>
+                <div class="view-title-recommend">9999</div>
+                <div class="view-title-reply">댓글</div>
+            </div>
+
+        </div>
+
+        <div class="contentBox-container">
+            <form id="contentBox-view">
+                
+                <div class="contentBox-view-content">내용
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                </div>    
+                <div class="contentBox-view-recommend">
+                    <div class="recommend-text1">9999</div>
+                    <div class="recommend-yes">추천</div>
+                    <div class="recommend-no">비추천</div>
+                    <div class="recommend-text2">0</div>
+                </div>            
+            </form>
+<!-- 댓글리스트 -->
+            <div class="contentBox-reply-list">
+
+            </div>
+<!-- 댓글입력 -->
+
+            <form class="contentBox-reply">
+                <div>
+                    <input type="text" class="reply-writer" value="댓글러" name="reply_writer">
+                    <input type="password" class="reply-password" value="q.mo" name='reply_password'>
+                </div>
+                <input type="text" class="reply-content" name="reply_content">
+                <input type="submit" value="등록">
+            </form>
+
+
+            <div class="contentBox-footer">
+                <div class="footer-list" onclick="location.href='../list/list.html'">전체글</div>
+                <div class="footer-wrapper">
+
+                    <div class="footer-write" onclick="location.href='../write/write.html'">글쓰기</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="reply-confirm">
+        <div class="reply-header">비밀번호를 입력해 주세요.</div>
+        <form id="reply-input">
+            <input type="password" class="replys-password" name="password">
+
+                <input type="submit" value="확인" class="reply-submit">
+                <div class="reply-cancel">취소</div>                
+            </div>  
+        </form>
+    </div>
+
+
+
+
+
+    
+  
+    <script src="annview.js"></script>
+</body>
+</html>

@@ -1,0 +1,531 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TTHakgyoansimMulgyeolB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimMulgyeolB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+body{
+    width:100vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    color: white;
+    font-size: 1vw;
+    font-family: 'Pretendard-Regular';
+    background: black;
+}
+
+
+/* 마우스호버이벤트 */
+
+#mouse-cursor{
+    position: absolute;
+    top:0;
+    left:0;
+    pointer-events: none;
+    z-index: 101;
+    border-radius: 50%;
+    display: none;
+  }
+  #inner-cursor{
+    position: relative;
+    width:80px;
+    height:80px;
+    z-index: 102;
+    font-size: 25px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 50%;
+    backdrop-filter: contrast(.2);  
+    --cursor-scale : 1;
+    transform: scale(var(--cursor-scale),var(--cursor-scale));
+    transition: 150ms ease-in-out;
+    color: #ffffff;
+  }
+
+
+
+
+
+/* 사이드메뉴 */
+html{
+    scroll-behavior:smooth;
+}
+.side-bar{
+    position: fixed;
+    right: 10px;
+    bottom : 2vh;
+    width: 80px;
+    height: 200px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    z-index: 98;
+}
+.side-box{
+    width: 95%;
+    height : 60px;
+    line-height:60px;
+    text-align: center;
+    background: #363636;
+    border-radius: 5px;
+    z-index: 99;
+    color: rgb(248, 222, 205);
+}
+.terms-description{
+    position: fixed;
+    right: 3.5vw;
+    bottom: 20vh;
+    width:0vw;
+    height:0vh;
+    background: white;
+    z-index: 97;
+    border-radius:15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:2vh;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.lang,.creater{
+    width:85%;
+    height:40%;
+    border:solid 1px black;
+    border-radius: 15px;
+    color: black;
+    box-sizing: border-box;
+    padding-left: 0.5vw;
+}
+.lang-title, .creater-title{
+    text-align: center;
+    margin-bottom: 0.9vh;
+    font-weight: bold;
+}
+.lang-text,.creater-text{
+    margin-bottom: 0.2vh;
+}
+.des-cancel{
+    position: absolute;
+    top:0;
+    right: 0.4vw;
+    color: black;
+}
+.des-cancel:hover{
+    color: #8b8b8b;
+    transition: 0.5s;
+}
+
+
+/* 메인메뉴 */
+.main-menu{
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+    position: absolute;
+    top:0;
+    height:6vh;
+    transition-property: height;
+    transition-duration: 0.1s;
+}
+.nav{
+    height:100%;
+    position: relative;
+}
+ul{
+    display: flex;
+}
+li{
+    list-style: none;
+    margin-left: 5vw;
+    display: inline-block;
+    height:6vh;
+}
+.menu{
+    color: white;
+    font-weight: bold;    
+    text-decoration: none;
+}
+.log-in{
+    position : relative;
+    right : 6vw;
+    margin-top: 1vw;
+    font-weight: bold;  
+}
+.sub-menu{
+    position: absolute;
+    padding: .5rem 1rem;
+    opacity: 1; 
+    width:100vw;
+    padding: 1rem;
+    color:white;
+    font-weight: bold;
+    bottom: 0;
+  }
+.sub-menu>span:nth-child(1){
+    margin-left:6.2vw;
+    
+}
+.sub-menu>span{
+    margin-right: 3vw;
+}
+.lines{
+    color:white;
+    position:absolute;
+    top:2.5vw;
+    opacity:0;
+    transition: 0.2s;
+    z-index: 2;
+    width: 100vw;
+}
+
+.history-content{
+    width:100vw;
+   
+}
+
+.menu:hover{
+    color: orange;
+    transition: 0.3s;
+}
+
+#HISTORY:hover,#오시는길:hover,#마스코트:hover,#선수단:hover,#선수기록:hover{
+    color: #32b2b2;
+    transition: 0.3s;
+}
+
+/* 대표화면 */
+.representative{
+    width: 100vw;
+    height: 100vh;
+    position: sticky;
+    top:0;
+}
+
+.sec1-logo{
+    position: relative;
+    width:100%;
+    height:10vh;
+    top:3vh;
+    font-size: 3vw;
+    line-height: 10vh;
+    text-align: center;
+}
+.main-text1{
+    width:35vw;
+    height:20vh;
+    position: absolute;
+    top : 14vh;
+    left: 5vw;
+    font-size: 8vw;
+}
+.main-text2{
+    width:39vw;
+    height:20vh;
+    position: absolute;
+    bottom: 3vh;
+    right: 5vw;
+    font-size: 8vw;
+}
+.main-img1{
+    width: 10vw;
+    height: 30vh;
+    position: absolute;
+    top:50vh;
+    left:5vw;
+    overflow: hidden;
+}
+.main-img2{
+    width: 10vw;
+    height: 30vh;
+    position: absolute;
+    bottom:3vh;
+    left:25vw;
+    overflow: hidden;
+}
+.main-img3{
+    width: 10vw;
+    height: 30vh;
+    position: absolute;
+    top:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    overflow: hidden;
+    transition: 0.2s;
+    background-attachment: fixed;    
+}
+.main-img4{
+    width: 10vw;
+    height: 30vh;
+    position: absolute;
+    top:14vh;
+    right:25vw;
+    overflow: hidden;
+}
+.main-img5{
+    width: 10vw;
+    height: 30vh;
+    position: absolute;
+    bottom:40vh;
+    right:5vw;
+    overflow: hidden;
+}
+
+.main-imgs{
+    width:10vw;
+    height: 30vh;
+}
+#img1{
+    position: relative;
+    transition: 0.5s;
+}
+#img2{
+    position: relative;
+    transition: 0.5s;
+}
+#img3{
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+}
+#img4{
+    position: relative;
+    transition: 0.5s;
+}
+#img5{
+    position: relative;
+    transition: 0.5s;
+}
+
+
+
+/* 섹션1 */
+.section1{
+    background: black;
+    width:100vw;
+    position: relative;
+    top:250vh;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+}
+.sec1-menu{
+    position: relative;
+    width:64%;
+    height:10vh;
+    left : 16vw;
+    margin-top: 26vh;
+    display: flex;
+    align-items: center;
+    gap:1vw;
+}
+.sec1-menu-list{
+    display: inline-block;
+    width: 7vw;
+    text-align: center;
+    font-size: 1.5vw;
+    color: rgb(175, 172, 172);
+    transition: 0.5s;
+}
+.sec1-player{
+    position: relative;
+    width:64%;
+    left : 18vw;
+    top: 3vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.sec1-player-lists{
+    width:30%;
+    height:60vh;
+    margin-bottom: 6vh;
+    position: relative;
+    top:5vh;
+}
+.player-picture{
+    width:100%;
+    height:75%;
+    border: solid 1px white;
+}
+.player-text{
+    width:100%;
+    height:25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.player-number{
+    width:35%;
+    height:100%;
+    display: inline-block;
+    color:white;
+    font-size: 3vw;
+    line-height: 12.5vh;
+    text-align: center;
+    position: relative;
+    border: solid 1px white;
+
+}
+.player-name{
+    width:60%;
+    height:100%;
+    display: inline-block;
+    color:white;
+    font-size: 1.25vw;
+    line-height: 7.5vh;
+    text-align: center;
+    border: solid 1px white;
+}
+.player-picture>img{
+    width: 100%;
+    height:100%;
+    object-fit: fill;
+}
+
+/* 고정된 메뉴 */
+.fixed-menu{
+    width:100%;
+    height:8vh;
+    position: fixed;
+    top:0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    z-index: 9;
+    display: none;
+}
+.fixed-menu-list{
+    width:13vw;
+    height: 100%;
+    text-align: center;
+    line-height: 8vh;
+    font-size: 1.5vw;
+    color:  rgb(175, 172, 172);
+    transition: 0.5s;
+    display: inline-block;
+}
+
+
+/* 팝업 */
+.popUp{
+    width:70vw;
+    height:96vh;
+    position:fixed;
+    top:2vh;
+    left:-85vw;
+    background: rgb(255, 255, 255);
+    z-index: 15;
+    font-size: 1.5vw;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+.topbar{
+    font-family: 'TTHakgyoansimMulgyeolB';
+    width:99.3%;
+    height:8vh;
+    color : white;
+    position: relative;
+    line-height: 8vh;
+    padding: 0.5vh;
+    border: solid 1px rgb(0, 0, 0);
+    background-image: linear-gradient(white, black);
+}
+.closeBtn{
+    font-family: 'Pretendard-Regular';
+    width:8vw;
+    height:100%;
+    position: absolute;
+    top: 0vh;
+    right:0vw;
+    font-size: 2vw;
+    text-align: center;
+    line-height: 8vh;
+    transition: 0.3s;
+    color : white; 
+    font-family: 'TTHakgyoansimMulgyeolB';
+}
+.popUp-container{
+    width:100%;
+    height:92%;
+    display: flex;
+}
+.popup-player-box{
+    display: flex;
+    border: solid 1px rgb(0, 0, 0);
+    width:65%;
+    height:100%;
+    flex-wrap: wrap;
+}
+.popup-sideMenu{
+    width:35%;
+    height:100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.popUp-imgBox,.popUp-graph{
+    width:40%;
+    height:50%;
+    border: solid 1px rgb(0, 0, 0);
+    color:black;
+}
+.popUp-imgBox>img{
+    width:95%;
+    height:95%;
+    object-fit: fill;
+}
+.popUp-text1,.popUp-text2{    
+    width:59%;
+    height:50%;
+    border: solid 1px rgb(0, 0, 0);
+    color: black;
+    box-sizing: border-box;
+    padding-left: 1vw;
+}
+.side-player{
+    width:100%;
+    height:30%;
+    border: solid 1px rgb(0, 0, 0);
+    display: flex;
+}
+.side-img{
+    width:40%;
+    height:100%;
+    border: solid 1px rgb(0, 0, 0);
+}
+.side-text{
+    width:59%;
+    height:100%;
+    border: solid 1px rgb(0, 0, 0);
+    color: black;
+    box-sizing: border-box;
+    padding-left: 1vw;  
+    font-size: 1.2vw;
+}
+.side-img > img{
+    width:100%;
+    height:100%;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="write.css">
+ </head>
+<body>
+
+            <!-- 마우스호버이벤트박스 -->
+            <div id="mouse-cursor">
+                <div id="inner-cursor">More</div>
+            </div>
+    
+            
+<!-- 사이드메뉴 -->
+
+<div class="side-bar">
+    <div class="side-box">TERMS</div>
+    <div class="side-box">T O P</div>
+    <div class="side-box" onclick="location.href='../../main/main.html'">MAIN</div>
+</div>
+<div class="terms-description">
+    <div class="des-cancel">close</div>
+    <div class="lang">
+        <div class="lang-title">사용언어</div>
+        <div class="lang-text">Html</div>
+        <div class="lang-text">Css</div>
+        <div class="lang-text">Javascript</div>
+        <div class="lang-text">라이브러리 : 카카오지도</div>
+    </div>
+    <div class="creater">
+        <div class="creater-title">설명</div>
+        <div class="creater-text">제작자 : 서보형</div>
+        <div class="creater-text">제작목적 : 한화이글스 응원 및<br> 자바스크립트 연습</div>
+        <div class="creater-text">이윤추구 : X</div>
+    </div>
+</div>
+
+
+<!-- 메인메뉴 -->
+<header>
+    <div class="main-menu">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="#" class="menu">EAGLES</a>
+                </li>
+                <li>
+                    <a href="#" class="menu">PLAYER</a>
+                </li>
+                <li>
+                    <a href="#" class="menu" onclick="location.href='../../gallery/photo.html'">PHOTO</a>
+                </li>
+                <li>
+                    <a href="#" class="menu" onclick="location.href='../../comunity/list/list.html'">COMUNITY</a>
+                </li>                        
+            </ul>    
+            <hr class="lines">                
+        </div>
+        <div class="log-in">LOGIN</div>                             
+    </div>          
+</header>
+
+
+<!-- 글쓰기 -->
+    <div class="writer-contentBox">
+        <div class="contentBox-logo">COMUNITY</div>
+
+        <div class="contentBox-container">
+            <form id="contentBox-write">
+       
+                <input type="text" name="write_writer" value="작성자" class="write-writer">
+                  
+                <input type="password" name="write_password" value="password" class="write-password">
+             
+                <input type="text" name="write_title" value="제목" class="write-title">
+
+                <textarea name="write_content" class="wirte-content"></textarea>
+
+                <div class="contentBox-write-submit">
+                    <input type="submit" value="등록" class="write-submit">
+                    <div class="write-cancel">취소</div>
+
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <div class="alert-cancel">
+        <div class="cancel-title">확인창</div>
+        <div class="cancel-container">
+            글 작성을 취소하시겠습니까?<br>
+            <div class="cancel-confirm" OnClick="location.href='../list/list.html'">확인</div>
+            <div class="cancel-cancel">취소</div>
+        </div>
+    </div>
+
+
+
+    
+  
+    <script src="write.js"></script>
+    <!-- <script src="../util.js"></script> -->
+</body>
+</html>

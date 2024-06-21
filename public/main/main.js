@@ -258,6 +258,22 @@ document.addEventListener('DOMContentLoaded', function() {
             start:'700%',
             end:'+=400%',
             scrub:true
+        },
+        ease:'power1.inOut'
+    })
+
+    ////////////////////sec2- description 등장
+    ScrollTrigger.create({
+        trigger:'.sec2-player-list',
+        start:'top top',
+        end:'+=200%',
+        scru:true,
+        onUpdate:self => {
+            s2_des_span[0].style.top = 0
+            s2_des_span[1].style.top = 0
+            s2_des_span[2].style.top = 0
+            s2_des_span[3].style.top = 0
+            console.log('확인')
         }
     })
 })
@@ -483,6 +499,8 @@ const text_text3 = document.querySelector('.s2-text3-wrapper > .text-text')
 const title_name4 = document.querySelector('.sec2-text4-title-wrapper > .title-name')
 const text_text4 = document.querySelector('.s2-text4-wrapper > .text-text')
 
+////////////////섹션2 description
+const s2_des_span = document.querySelectorAll('.s1-text-box-wrapper > span')
 
 ////섹2-하위logo
 async function displayTitle(bool){

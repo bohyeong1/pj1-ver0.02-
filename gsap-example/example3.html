@@ -1,86 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GSAP ScrollTrigger Sequential Animations</title>
-  <style>
-    body {
-      height: 300vh; /* 스크롤 테스트를 위해 페이지 높이 증가 */
-      margin: 0;
-    }
-    .section {
-      width: 100vw;
-      height: 100vh;
-      background-color: lightblue;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    .box {
-      background-color: lightcoral;
-      width: 30vw;
-      height: 30vh;
-      margin: 20px;
-    }
-  </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Hover Effect</title>
+    <link rel="stylesheet" href="example3.css">
 </head>
 <body>
-  <div class="section">
-    <div class="box box-1">Box 1</div>
-    <div class="box box-2">Box 2</div>
-    <div class="box box-3">Box 3</div>
-  </div>
-
-  <!-- GSAP 및 ScrollTrigger CDN 로드 -->
-  <script src="https://unpkg.com/gsap/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap/dist/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 섹션을 핀으로 고정
-    ScrollTrigger.create({
-      trigger: '.section',
-      start: 'top top',
-      end: '+=100%', // 스크롤 구간 동안 고정
-      pin: true,
-      pinSpacing: true,
-    });
-
-    // 첫 번째 박스 애니메이션
-    gsap.to('.box-1', {
-      x: 100,
-      scrollTrigger: {
-        trigger: '.section',
-        start: 'top top', // 섹션이 뷰포트 상단에 도달하고 10% 스크롤 후
-        end: '+=20%', // 20% 스크롤 진행되었을 때 끝남
-        scrub: true,
-      }
-    });
-
-    // 두 번째 박스 애니메이션
-    gsap.to('.box-2', {
-      x: 100,
-      scrollTrigger: {
-        trigger: '.section',
-        start: 'top top+=30%', // 섹션이 뷰포트 상단에 도달하고 30% 스크롤 후
-        end: 'top top+=40%', // 40% 스크롤 진행되었을 때 끝남
-        scrub: true,
-      }
-    });
-
-    // 세 번째 박스 애니메이션
-    gsap.to('.box-3', {
-      x: 100,
-      scrollTrigger: {
-        trigger: '.section',
-        start: 'top top+=50%', // 섹션이 뷰포트 상단에 도달하고 50% 스크롤 후
-        end: 'top top+=60%', // 60% 스크롤 진행되었을 때 끝남
-        scrub: true,
-      }
-    });
-  </script>
+    <button class="hover-button">Hover me</button>
 </body>
 </html>

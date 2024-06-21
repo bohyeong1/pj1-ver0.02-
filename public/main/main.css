@@ -535,6 +535,7 @@ html{
     position:relative;
     height: 100vh;
     background: #e49366;    transition: 0.1s linear;
+    transform-origin: left top;
 }
 .sec2-box4-img{
     position: absolute;
@@ -552,7 +553,7 @@ html{
 }
 .sec2-box4-text{
     position: absolute;
-    bottom:0vh;
+    top:71vh;
     color: black;
     width:100%;
     height:29vh;
@@ -565,6 +566,72 @@ html{
 .s2-text4-wrapper{
     overflow: hidden;   height: 6vh;  position: relative;
 }
+
+/* sec2-player-list */
+.sec2-box4-wrapper{
+    width: 100%;    position: relative;
+    height: 100vh;  z-index: 3; overflow: hidden;   transition: 0.1s;
+    background: #e49366;
+}
+.sec2-player-list{
+    background: #e49366;
+    width: 100%;
+    height: 550vh;
+    position: absolute; top:70vh;
+    z-index: 2;
+}
+#sec2-p-l-imgs{
+    width: 100%;
+    height: 70vh;
+}
+.sec2-p-l-textbox{
+    width: 100%;
+    height: 60vh;
+    display: flex;  justify-content: center;    align-items: center;
+
+}
+.sec2-p-l-t-btn{
+    font-size: 3vw; border: solid 1px black;  position: relative; color: black;
+    cursor: pointer;    padding: 30px 60px; box-sizing: border-box; background: none;    border-radius: 45px;
+    overflow: hidden;   
+}
+.sec2-p-l-t-btn:hover{
+    border: solid 1px #472716;   color: white;
+}
+.sec2-p-l-t-btn::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #a36849;
+    z-index: -1;
+    transition: top 0.3s ease-in-out;
+}
+@keyframes divUp {
+    from {
+        top: 100%;
+    }
+    to {
+        top: 0;
+    }
+}
+@keyframes divDown {
+    from {
+        top: 0;
+    }
+    to {
+        top: -100%;
+    }
+}
+.sec2-p-l-t-btn:not(:hover)::before {
+    animation: divDown 0.3s ease-in-out forwards;
+}
+.sec2-p-l-t-btn:hover::before {
+    animation: divUp 0.3s ease-in-out forwards;
+}
+
 
 
 
@@ -580,8 +647,6 @@ html{
 .s1-text-box-wrapper > span{
     height: 100%;   position: absolute; top:5vw;  width: 100%;  transition: 0.4s;
 }
-
-
 
 
 

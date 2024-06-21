@@ -1,0 +1,53 @@
+
+.hover-button {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hover-button::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0056b3;
+    z-index: -1;
+    transition: top 0.3s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        top: 100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+
+@keyframes slideDown {
+    from {
+        top: 0;
+    }
+    to {
+        top: -100%;
+    }
+}
+
+.hover-button:not(:hover)::before {
+    animation: slideDown 0.3s ease-in-out forwards;
+}
+
+.hover-button:hover::before {
+    animation: slideUp 0.3s ease-in-out forwards;
+}

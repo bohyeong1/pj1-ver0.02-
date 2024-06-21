@@ -74,21 +74,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }) 
 
     //////핀으로 고정
+    ScrollTrigger.create({
+        trigger: ".section-2",
+        pin: ".section-2",
+        start: "top top", 
+        end: "+=1000%"
+    });
+
+
+
+    ///////////////////////////////container x축 이동
     gsap.to('.sec2-content', {
         x: '-230vw', 
         scrollTrigger: {
           trigger: '.sec2-content', 
           start: 'top top', 
-          end: '+=4600', 
-          pin: true,
-          scrub: true 
+          end: '+=400%', 
+          scrub:true
         }
     })
 
 
+
     ////////////선수1
-
-
     //////////선수1 width
     gsap.to('.sec2-content-box1', {
     width: '60vw', 
@@ -217,6 +225,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 title_name4.style.top = '5.5vw'
                 text_text4.style.top = '6vh'
             }
+        }
+    })
+
+    ///////////////////// pin풀고 선수리스트 스크롤 내리기
+    gsap.to('.sec2-box4-wrapper',{
+        height:'70vh',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'700%',
+            end:'+=20%',
+            scrub:true
+        }
+    })
+
+    ///////////////////////////////////player4 scale 조절하기
+    gsap.to('.sec2-content-box4',{
+        scale:'0.5',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'700%',
+            end:'+=80%',
+            scrub:true
+        }
+    })
+
+    ///////////////////////////////////위로 올리기
+    gsap.to('.sec2-content-box4',{
+        y:'-210vh',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'700%',
+            end:'+=400%',
+            scrub:true
         }
     })
 })

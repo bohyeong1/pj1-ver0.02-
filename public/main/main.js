@@ -24,37 +24,44 @@ document.addEventListener('DOMContentLoaded', function() {
         end: '+=200%',
         pin: '.section-1',
         pinSpacing: true,
-        onUpdate: self => {
-          let pageY_value = smoother.scrollTop()
-          console.log(pageY_value)
-  
-          // 섹션 1 이미지 애니메이션
-          s1_imgbox[5].style.transform = `translate(${-50 + pageY_value * 0.2}%, ${pageY_value * 0.2}%)`
-          s1_imgbox[4].style.transform = `translate(${-50 - pageY_value * 0.2}%, ${pageY_value * 0.2}%)`
-  
-          if (pageY_value > 200) {
-            s1_imgbox[0].style.transform = `translate(${-50 + -(pageY_value - 200) * 0.2}%, ${-(pageY_value - 200) * 0.4}%)`
-            s1_imgbox[1].style.transform = `translate(${-50 + (pageY_value - 200) * 0.2}%, ${-(pageY_value - 200) * 0.2}%)`
-          }
-          if (pageY_value > 350) {
-            s1_imgbox[6].style.transform = `translate(${-50 - (pageY_value - 350) * 0.01}%, ${(pageY_value - 350) * 0.3}%)`
-            s1_imgbox[3].style.transform = `translate(${-50 + (pageY_value - 350) * 0.2}%, ${-(pageY_value - 350) * 0.4}%)`
-            s1_imgbox[2].style.transform = `translate(${-50 - (pageY_value - 350) * 0.2}%, ${-(pageY_value - 350) * 0.4}%)`
-          }
-  
-          for (const img of s1_imgbox) {
-            if (img.getBoundingClientRect().top < -50) {
-              img.style.opacity = 0.3
-            } else if (img.getBoundingClientRect().top > 840) {
-              img.style.opacity = 0.3
-            } else {
-              img.style.opacity = 1
+    })
+
+    //섹션1 part1,part2-t1 밀기
+    gsap.to('.s1-p1-t1-container',{
+        x:'-100vw',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'top top',
+            end:'+=400%',
+            scrub:true
+        }
+    })
+    gsap.to('.s1-p2-t1-span',{
+        x:'-100vw',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'top top',
+            end:'+=400%',
+            scrub:true
+        }
+    })
+    
+    ////////섹션1 part2-t2 밀기, 택스트 에니메이션
+    gsap.to('.s1-p2-t2',{
+        x:'-200vw',
+        scrollTrigger:{
+            trigger:'#smmoth-wrapper',
+            start:'top top',
+            end:'+=400%',
+            scrub:true,
+            onUpdate:self => {
+                
             }
-          }
         }
     })
 
-  
+
+  ///////////////////////////////////////////////////////////////////
     // 섹션 2 스크롤 이벤트
     ScrollTrigger.create({
     trigger: '#smooth-wrapper',
@@ -228,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
-    ///////////////////// pin풀고 선수리스트 스크롤 내리기
+    ///////////////////// 선수리스트 화면에 등장시키기
     gsap.to('.sec2-box4-wrapper',{
         height:'70vh',
         scrollTrigger:{
@@ -264,17 +271,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     ////////////////////sec2- description 등장
     ScrollTrigger.create({
-        trigger:'.sec2-player-list',
-        start:'top top',
-        end:'+=200%',
-        scru:true,
-        onUpdate:self => {
+        trigger:'#smooth-wrapper',
+        start:'810%',
+        end:'1100%',
+        onEnter:self => {
             s2_des_span[0].style.top = 0
             s2_des_span[1].style.top = 0
             s2_des_span[2].style.top = 0
             s2_des_span[3].style.top = 0
-            console.log('확인')
-        }
+        },
+        onLeave:self => {
+            s2_des_span[0].style.top = '5vw'
+            s2_des_span[1].style.top = '5vw'
+            s2_des_span[2].style.top = '5vw'
+            s2_des_span[3].style.top = '5vw'
+        },
+        onEnterBack: self => {
+            s2_des_span[0].style.top = 0
+            s2_des_span[1].style.top = 0
+            s2_des_span[2].style.top = 0
+            s2_des_span[3].style.top = 0
+        },
+        onLeaveBack: self => {
+            s2_des_span[0].style.top = '5vw'
+            s2_des_span[1].style.top = '5vw'
+            s2_des_span[2].style.top = '5vw'
+            s2_des_span[3].style.top = '5vw'
+        },
     })
 })
 
@@ -340,6 +363,7 @@ function animation_menu_boxs(){
     menu_boxs[2].style.top = '11.5px'
     menu_boxs[2].style.transform = 'rotateZ(-45deg)'
 }
+
 async function click_menu_tap(){
     const menu_state = main_menu.getAttribute('state')
 
@@ -425,8 +449,6 @@ async function display_menus(bool){
             menu.remove()
         }
     }
-
-
 }
 
 
@@ -441,19 +463,9 @@ async function disappearWrapper(){
 
     await wait(700)
     root_wrapper.remove()
-
-    await wait(100)
-    onload_sec1()
 }
 
-async function onload_sec1(){
-    for(const img of s1_imgs){
-        img.style.width = '100%'
-        img.style.height = '100%'
-        await wait(80+Math.random()*100)
-    }
-    s1_text.style.top = 0
-}
+
 
 
 window.addEventListener('load', disappearWrapper)
@@ -463,10 +475,10 @@ window.addEventListener('load', disappearWrapper)
 
 
 ////////////////////////////////////섹션1
-const section_1 = document.querySelector('.section-1')
-const s1_imgs = document.querySelectorAll('#s1_imgs')
-const s1_text = document.querySelector('.s1-text')
-const s1_imgbox = document.querySelectorAll('#s1-imgbox')
+// const section_1 = document.querySelector('.section-1')
+// const s1_imgs = document.querySelectorAll('#s1_imgs')
+// const s1_text = document.querySelector('.s1-text')
+// const s1_imgbox = document.querySelectorAll('#s1-imgbox')
 
 
 
@@ -535,8 +547,6 @@ async function display_sec2_logo(bool){
             span.style.transform = 'translateY(0)'
         }
     }
-
-
 }
 
 

@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GSAP ScrollSmoother Example</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Pop-out Effect</title>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    perspective: 1000px;
+  }
 
-  <link rel="stylesheet" href="example.css">
+  .container {
+    width: 300px;
+    height: 200px;
+    background-color: #1e1e1e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border: 2px solid #444;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateZ(0);
+    animation: popOut 2s infinite alternate;
+  }
 
-
-  <script src="../gsap-premium/minified/gsap.min.js"></script>
-  <script src="../gsap-premium/minified/ScrollTrigger.min.js"></script>
-  <script src="../gsap-premium/minified/ScrollSmoother.min.js"></script>
-
+  @keyframes popOut {
+    0% {
+      transform: translateZ(0);
+    }
+    100% {
+      transform: translateZ(300px) rotateY(20deg) rotateX(10deg);
+    }
+  }
+</style>
 </head>
 <body>
-    <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <section class="section-1 s1_default">
-            <div class="s1-img1" id="s1-imgbox">
-              <img class="s1_imgs" src="https://selemen.liqium.com/img/m2.jpg"></img>
-            </div>
-            <div class="s1-img2" id="s1-imgbox">
-              <img class="s1_imgs" src="https://selemen.liqium.com/img/m5.jpg"></img>
-            </div>
-            <div class="s1-img3" id="s1-imgbox">
-              <img class="s1_imgs" src="https://selemen.liqium.com/img/m3.jpg"></img>
-            </div>
-            <div class="s1-img4" id="s1-imgbox">
-              <img class="s1_imgs" src="https://selemen.liqium.com/img/m7.jpg"></img>
-            </div>
-            <div class="s1-img5" id="s1-imgbox">
-              <img class="s1_imgs" src="https://selemen.liqium.com/img/m5.jpg"></img>
-            </div>
-            <div class="s1-img6" id="s1-imgbox">
-              <img class="s1_imgs" src="https://selemen.liqium.com/img/m5.jpg"></img>
-            </div>
-            <div class="s1-img7" id="s1-imgbox">
-              <img class="s1_imgs" src="https://selemen.liqium.com/img/m6.jpg"></img>
-            </div>
-            <div class="s1-textcontainer" style="z-index: 3;">
-              <div class="s1-text" style="color: #a9abb5; font-size: 20rem;">Hanwha EG</div>
-            </div>
-          </section>
-
-
-
-          
-          <div class="section-2">Section 2</div>
-          <!-- 나머지 콘텐츠 -->
-        </div>
-      </div>
-      <div class="side-bar">
-        <!-- 사이드 바 콘텐츠 -->
-      </div>
-
-
-    <script src="example.js"></script>
+  <div class="container">
+    3D Pop-out Effect
+  </div>
 </body>
 </html>

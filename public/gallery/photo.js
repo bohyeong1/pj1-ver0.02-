@@ -181,8 +181,7 @@ const moreBtnClick = async(e)=>{
         html.scrollTop = `${(h-266)*pixOfH+100*pixOfH}`
     }
 
-    if(h===982.5){
-        
+    if(h===982.5){        
         more_btn.innerHTML='Close!'
     }}
     

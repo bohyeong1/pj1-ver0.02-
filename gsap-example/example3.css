@@ -1,53 +1,16 @@
-
-.hover-button {
-    position: relative;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 1;
+.s1-videobox1{
+    display: flex;  flex-direction: column; gap:5px;
+    transform: translateZ(300px) rotateY(-20deg) rotateX(10deg);
 }
 
-.hover-button::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0056b3;
-    z-index: -1;
-    transition: top 0.3s ease-in-out;
+.s1-video1{
+    width: 800px;    height: 400px;
 }
-
-@keyframes slideUp {
-    from {
-        top: 100%;
-    }
-    to {
-        top: 0;
-    }
+.s1-video1-1{
+    transform: rotateZ(180deg) rotateY(180deg);   width: 800px;    height: 400px;
+    opacity: 0.8;
 }
-
-
-@keyframes slideDown {
-    from {
-        top: 0;
-    }
-    to {
-        top: -100%;
-    }
-}
-
-.hover-button:not(:hover)::before {
-    animation: slideDown 0.3s ease-in-out forwards;
-}
-
-.hover-button:hover::before {
-    animation: slideUp 0.3s ease-in-out forwards;
+.s1-shadow{
+    background: linear-gradient(to top, rgba(0, 0, 0, 15) 30%, transparent);
+    width: 800px; height: 500px;    position: absolute; bottom:0;
 }

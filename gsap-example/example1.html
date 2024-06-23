@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Animation</title>
-    <link rel="stylesheet" href="example1.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Effect</title>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    perspective: 1000px;
+  }
+
+  .container {
+    width: 300px;
+    height: 200px;
+    background-color: #1e1e1e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border: 2px solid #444;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: rotateY(0deg);
+    transition: transform 0.5s ease;
+  }
+
+  .container:hover {
+    transform: rotateY(20deg);
+  }
+</style>
 </head>
 <body>
-    <div class="page" id="page1">
-        <h1>Welcome to Page 1</h1>
-        <button onclick="goToPage('page2')">Go to Page 2</button>
-    </div>
-    <div class="page" id="page2" style="display:none;">
-        <h1>Welcome to Page 2</h1>
-        <button onclick="goToPage('page1')">Go to Page 1</button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="example1.js"></script>
+  <div class="container">
+    3D Effect
+  </div>
 </body>
 </html>

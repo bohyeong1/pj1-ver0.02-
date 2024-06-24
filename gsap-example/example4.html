@@ -3,29 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Video Embed</title>
+  <title>ScrollTrigger VW Units Example</title>
   <style>
-    .video-container {
-      position: relative;
-      width: 30%;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
+    body {
+      height: 200vh; /* 충분한 스크롤 공간 확보 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
+    #smooth-wrapper {
+      height: 100vh;
       width: 100%;
-      height: 100%;
-      border: 0;
+      background-color: lightgray;
+      position: relative; /* 상대 위치 설정 */
+    }
+    .s1-mvbox {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      top: 50vh; /* 뷰포트 높이의 50% */
+      left: 10vw; /* 뷰포트 너비의 10% */
     }
   </style>
 </head>
 <body>
-  <div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EcNJ1OQckWI?si=cUbCcGD-iCmHlNSc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div id="smooth-wrapper">
+    <div class="s1-mvbox"></div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".s1-mvbox", {
+      scaleX: 2, // 너비를 2배로 확장
+      transformOrigin: "top", // 애니메이션 기준점을 top으로 설정
+      scrollTrigger: {
+        trigger: "#smooth-wrapper",
+        start: "top center", // 트리거가 뷰포트 중앙에 도달할 때 시작
+        end: "bottom center", // 애니메이션 끝 지점
+        scrub: true,
+        markers: true // 디버깅용 마커 표시
+      }
+    });
+
+    // 뷰포트 크기 변경 시 ScrollTrigger 새로 고침
+    const refreshScrollTrigger = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', refreshScrollTrigger);
+  </script>
 </body>
-</html
+</html>

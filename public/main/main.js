@@ -21,22 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
     ScrollTrigger.create({
         trigger: '#smooth-wrapper',
         start: 'top top',
-        end: '+=200%',
+        end: '+=400%',
         pin: '.section-1',
         pinSpacing: true,
     })
 
     //섹션1 part1,part2-t1 밀기
     gsap.to('.s1-p1-t1-container',{
-        x:'-100vw',
-        scrollTrigger:{
-            trigger:'#smooth-wrapper',
-            start:'top top',
-            end:'+=400%',
-            scrub:true
-        }
-    })
-    gsap.to('.s1-p2-t1-span',{
         x:'-100vw',
         scrollTrigger:{
             trigger:'#smooth-wrapper',
@@ -54,23 +45,117 @@ document.addEventListener('DOMContentLoaded', function() {
             start:'top top',
             end:'+=400%',
             scrub:true,
-            onUpdate:self => {
-                
-            }
         }
     })
 
+    ///////////////////섹션1 part2-t2 텍스트 에니메이션
+    s1_p2_t2_contents.forEach((el,index)=>{
+        gsap.to(el, {
+            y:'33vh',
+            rotation:10+Math.random()*2,
+            scrollTrigger:{
+                trigger:'#smooth-wrapper',
+                start:`${(0 + index*10)}%`,
+                end:'400%',
+                onLeaveBack: () => {
+                    gsap.to(el, {
+                      y: 0,
+                      rotation:0
+                    })},
+                toggleActions: "play none none reverse"
+            },
+        })
+    })
+
+    //////////////////////섹션1 div박스 짬푸에니메이션
+
+    const boxAni = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#smooth-wrapper',
+          start: '35%',
+          end: '120%',
+          scrub: true
+        }
+      })  
+
+    boxAni.to('.s1-mvbox', {
+    y: '-50vh',
+    x: '5vw',
+    rotation: 90
+    })
+    
+    boxAni.to('.s1-mvbox',{
+    y:'-50vh'
+    })
+
+    boxAni.to('.s1-mvbox', {
+    y: '0vh',
+    x: '10vw',
+    rotation: 180
+    })
+
+    boxAni.to('.s1-mvbox',{
+    x:'0',
+    rotation:0
+    })
+
+    /////////////////////////////섹션 1 text2 에니메이션
+    gsap.to('.s1-mvbox',{
+    scaleX:'6',
+    transformOrigin:'left',
+    scrollTrigger:{
+        trigger:'#smooth-wrapper',
+        start:'125%',
+        end:'300%',
+        scrub:true
+    }
+    })
+
+    const box2Ani = gsap.timeline({
+    scrollTrigger:{
+        trigger:'#smooth-wrapper',
+        start:'150%',
+        end:'210%',
+        scrub:true
+    }
+    })
+
+    s1_p2_t2_contents2.forEach((el,index)=>{
+    box2Ani.to(el,{
+        x:`${10+(6-index)**2}vw`,
+        y:'-100vh',
+        rotation:45
+    })
+    })
+
+    ////////////////////////////s1 마지막 텍스트
+
+    const finalText = gsap.timeline({
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'310%',
+            end:'340%',
+            scrub:true
+        }
+    })
+    
+    finalText.to(s1_mvbox_t1_span,{
+        y:'-12.5vw'
+    })
+    finalText.to(s1_mvbox_t2_span,{
+        y:'-3vw'
+    })
 
   ///////////////////////////////////////////////////////////////////
     // 섹션 2 스크롤 이벤트
     ScrollTrigger.create({
     trigger: '#smooth-wrapper',
-    start: '200%',
-    end: '300%',
+    start: '400%',
+    end: '500%',
     onUpdate: self => {
         let pageY_value = smoother.scrollTop()
-        console.log(pageY_value)
-        if (pageY_value > 2400) {
+        // console.log(pageY_value)
+        if (pageY_value > 4200) {
         display_sec2_logo(true)
         displayTitle(true)
         } else {
@@ -85,14 +170,15 @@ document.addEventListener('DOMContentLoaded', function() {
         trigger: ".section-2",
         pin: ".section-2",
         start: "top top", 
-        end: "+=1000%"
+        end: "+=1000%",
+        pinSpacing:true
     });
 
 
 
     ///////////////////////////////container x축 이동
     gsap.to('.sec2-content', {
-        x: '-230vw', 
+        x: '-224vw', 
         scrollTrigger: {
           trigger: '.sec2-content', 
           start: 'top top', 
@@ -240,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         height:'70vh',
         scrollTrigger:{
             trigger:'#smooth-wrapper',
-            start:'700%',
+            start:'900%',
             end:'+=20%',
             scrub:true
         }
@@ -251,7 +337,18 @@ document.addEventListener('DOMContentLoaded', function() {
         scale:'0.5',
         scrollTrigger:{
             trigger:'#smooth-wrapper',
-            start:'700%',
+            start:'900%',
+            end:'+=80%',
+            scrub:true
+        }
+    })
+
+    /////////////description 위치 조정
+    gsap.to('.sec2-text-box',{
+        x:'-20vw',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'900%',
             end:'+=80%',
             scrub:true
         }
@@ -262,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
         y:'-210vh',
         scrollTrigger:{
             trigger:'#smooth-wrapper',
-            start:'700%',
+            start:'900%',
             end:'+=400%',
             scrub:true
         },
@@ -272,38 +369,39 @@ document.addEventListener('DOMContentLoaded', function() {
     ////////////////////sec2- description 등장
     ScrollTrigger.create({
         trigger:'#smooth-wrapper',
-        start:'810%',
-        end:'1100%',
+        start:'1010%',
+        end:'1300%',
         onEnter:self => {
             s2_des_span[0].style.top = 0
-            s2_des_span[1].style.top = 0
-            s2_des_span[2].style.top = 0
-            s2_des_span[3].style.top = 0
+            s1_text_box_wrapper2.style.opacity = 1
+            s1_text_box_wrapper3.style.opacity = 1
         },
         onLeave:self => {
             s2_des_span[0].style.top = '5vw'
-            s2_des_span[1].style.top = '5vw'
-            s2_des_span[2].style.top = '5vw'
-            s2_des_span[3].style.top = '5vw'
+            s1_text_box_wrapper2.style.opacity = 0
+            s1_text_box_wrapper3.style.opacity = 0
         },
         onEnterBack: self => {
             s2_des_span[0].style.top = 0
-            s2_des_span[1].style.top = 0
-            s2_des_span[2].style.top = 0
-            s2_des_span[3].style.top = 0
+            s1_text_box_wrapper2.style.opacity = 1
+            s1_text_box_wrapper3.style.opacity = 1
         },
         onLeaveBack: self => {
             s2_des_span[0].style.top = '5vw'
-            s2_des_span[1].style.top = '5vw'
-            s2_des_span[2].style.top = '5vw'
-            s2_des_span[3].style.top = '5vw'
+            s1_text_box_wrapper2.style.opacity = 0
+            s1_text_box_wrapper3.style.opacity = 0
         },
     })
 })
 
 
 
+//////////화면 리사이즈 시 스크롤 트리거의 스크롤량 다시 체크
+function refreshScrollTrigger(){
+    ScrollTrigger.refresh()
+  }
 
+window.addEventListener('resize', refreshScrollTrigger)
 
 
 
@@ -476,12 +574,12 @@ window.addEventListener('load', disappearWrapper)
 
 ////////////////////////////////////섹션1
 // const section_1 = document.querySelector('.section-1')
-// const s1_imgs = document.querySelectorAll('#s1_imgs')
-// const s1_text = document.querySelector('.s1-text')
-// const s1_imgbox = document.querySelectorAll('#s1-imgbox')
-
-
-
+const s1_p2_t2_contents = document.querySelectorAll('.s1-p2-t2-contents')
+const s1_p2_t2_contents2 = document.querySelectorAll('.s1-p2-t2-contents2')
+const s1_mvbox_t1_span = document.querySelector('.s1-mvbox-t1-span')
+const s1_mvbox_t2_span = document.querySelector('.s1-mvbox-t2-span')
+const s1_text_box_wrapper2 = document.querySelector('.s1-text-box-wrapper2')
+const s1_text_box_wrapper3 = document.querySelector('.s1-text-box-wrapper3')
 
 ///////////////////////////////////섹션2
 const sec2_title_spans = document.querySelectorAll('.newplayer-logo > span')

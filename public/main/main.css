@@ -281,10 +281,9 @@ html{
     width: 300vw;   height: 60%;
     display: flex;  flex-direction: column;
     box-sizing: border-box; padding-left: 5vw;  padding-top: 1vw;
-    overflow: hidden;
 }
 .s1-p2-t1{
-    overflow: hidden;   position: relative;
+    position: relative;
 }
 .s1-p2-t1-span{
     position: relative; display: inline-block;
@@ -293,28 +292,51 @@ html{
     display: flex;  align-items:flex-end; height: 100%;
 }
 .s1-clone-mvbox{
-    width: 15vw;    height: 15vw;
+    width: 15vw;    height: 15vw;  
 }
 .s1-mvbox{
     width: 15vw;    height: 15vw;   background: rgb(255, 102, 0);   position: absolute; left: 5vw;  bottom: 10vh;
 }
-.s1-p2-t2-textbox{
-    display: flex;  box-sizing: border-box;
+.s1-mvbox-t1{
+    position: absolute; right: 15vw; bottom: 12vh;   color: white;   font-size: 10vw;   overflow: hidden;    width: 69vw;    height: 12.5vw;
 }
+.s1-mvbox-t2{
+    position: absolute; right: 5vw;   bottom: 10vh;  color: black; font-size: 2vw;   overflow: hidden;      width: 11.5vw;    height: 3vw;
+}
+
+.s1-mvbox-t1-span{
+    position: absolute; top:12.5vw;   transition: 0.1s;
+}
+.s1-mvbox-t2-span{
+    position: absolute; top:3vw;   transition: 0.1s;
+}
+
+
+.s1-p2-t2-textbox{
+    display: flex;  box-sizing: border-box; overflow: hidden;    color: white;   font-size: 15vw;  
+}
+.s1-p2-t2-contents{
+    transition: 0.1s;
+}
+
+/* s1-text2 */
+.s1-p2-t2-textbox2{
+    display: flex;  box-sizing: border-box; position: relative; margin-left: 70vw;  box-sizing: border-box;    color: white;   font-size: 15vw;
+}
+
+
 /* 섹션2 */
 .section-2{
     width:100vw;
-    height:1000vh;
+    /* height:1000vh; */
     background: #f1efeb;
 }
 .sec2-content{
     width:340vw;
-    height:560vh;
+    /* height:560vh; */
     display: flex;
 }
-.s1-p2-t2-textbox{
-    color: white;   font-size: 15vw;
-}
+
 /* s1- title */
 .sec2-title{
     width:50vw;
@@ -649,7 +671,9 @@ html{
     height: 100%;   position: absolute; top:5vw;  width: 100%;  transition: 0.4s;
 }
 
-
+.s1-text-box-wrapper2{
+    position: relative; width: 55vw;    display: flex;  flex-direction: column; gap:1vh;
+}
 
 
 /* 섹션3*/

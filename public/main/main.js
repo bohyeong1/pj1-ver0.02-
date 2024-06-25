@@ -9,6 +9,29 @@ function wait(time){
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    // sec2-part2 박스 돌리기
+    const boxs = document.querySelectorAll('.box')
+        const updateFaceColors = () => {
+            boxs.forEach(box => {
+                const rect = box.getBoundingClientRect()
+                const centerX = window.innerWidth / 2
+                const centerY = window.innerHeight / 2
+                const distanceX = Math.abs(rect.left + rect.width / 2 - centerX)
+                const distanceY = Math.abs(rect.top + rect.height / 2 - centerY)
+                const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2)
+                const maxDistance = Math.sqrt(centerX ** 2 + centerY ** 2)
+                const intensity = distance / maxDistance
+                const colorValue = Math.min(255, Math.max(0, Math.round(intensity * 255)))
+                box.style.backgroundColor = `rgb(${colorValue}, ${colorValue}, ${colorValue})`
+            })
+            requestAnimationFrame(updateFaceColors)
+        }
+        updateFaceColors()
+
+
+
+
     const smoother = ScrollSmoother.create({
         wrapper: '#smooth-wrapper',
         content: '#smooth-content',
@@ -392,7 +415,59 @@ document.addEventListener('DOMContentLoaded', function() {
             s1_text_box_wrapper3.style.opacity = 0
         },
     })
+
+    ////////////////////sec2- part2 등장
+    gsap.to('.sec2-part2',{
+        x:'-71vw',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1250%',
+            end:'+=150%',
+            scrub:true
+        }
+    })
+    ///sec2 - part2로 화면덮기
+    gsap.to('.section-2',{
+        x:'-29vw',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1400%',
+            end:'1500%',
+            scrub:true
+        }
+    })
+    /////sec2- part2 화면 에니메이션
+    gsap.to('.s2-p2-con-img',{
+        scale:'0.8',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1450%',
+            end:'1500%',
+            scrub:true
+        }
+    })
+    gsap.to('.s2-p2-con-textbox1',{
+        opacity:1,
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1450%',
+            end:'1500%',
+            toggleActions: 'play none play reverse'
+        }
+    })
+    gsap.to('.s2-p2-con-textbox2',{
+        opacity:1,
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1450%',
+            end:'1500%',
+            toggleActions: 'play none play reverse'
+        }
+    })
 })
+
+
+
 
 
 
@@ -403,44 +478,6 @@ function refreshScrollTrigger(){
 
 window.addEventListener('resize', refreshScrollTrigger)
 
-
-
-
-
-
-
-
-
-
-/////////////////////////사이드메뉴
-const sideBtn = document.querySelectorAll('.side-box')
-const terms_description = document.querySelector('.terms-description')
-const des_cancel = document.querySelector('.des-cancel')
-const lang = document.querySelector('.lang')
-const creater = document.querySelector('.creater')
-
-des_cancel.addEventListener('click', ()=>{
-    terms_description.style.width = '0vw'
-    terms_description.style.height = '0vh'
-    terms_description.style.opacity = 0 
-})
-sideBtn[1].addEventListener('click', ()=>{
-    html.scrollTop = 0
-})
-sideBtn[0].addEventListener('click', (e)=>{
-
-    if(terms_description.style.width==='15vw'){
-        terms_description.style.width = '0vw'
-        terms_description.style.height = '0vh'
-        terms_description.style.opacity = 0    
-
-    }else{
-        terms_description.style.width = '15vw'
-        terms_description.style.height = '40vh'
-        terms_description.style.opacity = 1
-    }
-    
-})
 
 
 
@@ -682,18 +719,6 @@ function mouseup(e){
 
 
 
-for(sideBt of sideBtn){
-sideBt.addEventListener('mousemove', mousemove)
-sideBt.addEventListener('mousedown', mousedown)
-sideBt.addEventListener('mouseout',()=>{
-    cursorParent.style.display = 'none'
-})}
-
-des_cancel.addEventListener('mousemove', mousemove)
-des_cancel.addEventListener('mousedown', mousedown)
-des_cancel.addEventListener('mouseout',()=>{
-    cursorParent.style.display = 'none'
-})
 
 
 main_menu.addEventListener('mousemove', mousemove)

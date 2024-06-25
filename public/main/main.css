@@ -157,79 +157,6 @@ html, body {
     /* cursor: pointer; */
 }
 
-/* 사이드메뉴 */
-html{
-    scroll-behavior:smooth;
-}
-.side-bar{
-    position: fixed;
-    right: 10px;
-    bottom: 2vh;
-    width: 80px;
-    height: 200px;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    z-index: 98;
-}
-.side-box{
-    width: 95%;
-    height : 60px;
-    line-height:60px;
-    text-align: center;
-    background: #363636;
-    border-radius: 5px;
-    z-index: 99;
-    color: rgb(248, 222, 205);
-}
-.terms-description{
-    position: fixed;
-    right: 3.5vw;
-    bottom: 20vh;
-    width:0vw;
-    height:0vh;
-    background: white;
-    z-index: 97;
-    border-radius:15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:2vh;
-    opacity: 0;
-    transition: 0.2s;
-}
-
-.lang,.creater{
-    width:85%;
-    height:40%;
-    border:solid 1px black;
-    border-radius: 15px;
-    color: black;
-    box-sizing: border-box;
-    padding-left: 0.5vw;
-}
-.lang-title, .creater-title{
-    text-align: center;
-    margin-bottom: 0.9vh;
-    font-weight: bold;
-}
-.lang-text,.creater-text{
-    margin-bottom: 0.2vh;
-}
-.des-cancel{
-    position: absolute;
-    top:0;
-    right: 0.4vw;
-    color: black;
-}
-.des-cancel:hover{
-    color: #8b8b8b;
-    transition: 0.5s;
-}
-
-
-
 
 
 
@@ -676,7 +603,170 @@ html{
 }
 
 
-/* 섹션3*/
-.section-3{
-    width: 100;
+/* 섹션2 - part2 */
+.sec2-part2{
+    width: 100vw;   height: 100vh;  top:0; right: -100vw;   position: absolute; background: black;
 }
+
+.box-container {
+    perspective: 1000px;
+    position: absolute; left:50%; top:50%;  transform: translate(-50%,-50%);    
+    /* opacity: 0.8; */
+}
+
+.cube {
+    width: 200px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+
+    animation: rotate 30s infinite linear;
+}
+
+.box {
+    position: absolute;
+    width: 200px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    backface-visibility: hidden;
+}
+
+.front  { transform: rotateY(  0deg) translateZ(100px);    height: 400px; }
+.back   { transform: rotateY(180deg) translateZ(100px);    height: 400px; }
+.right  { transform: rotateY( 90deg) translateZ(100px);    height: 400px; }
+.left   { transform: rotateY(-90deg) translateZ(100px);    height: 400px; }
+.top    { transform: rotateX( 90deg) translateZ(100px);    height: 200px; }
+.bottom { transform: rotateX(-90deg) translateZ(100px);    height: 200px; }
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg) rotateZ(10deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateZ(10deg);
+    }
+}
+/* s2-p2 img */
+.s2-p2-con-img{
+    width: 60vw;    height: 65vh;   position: absolute; left:50%; top:50%; transform: translate(-50%,-50%);
+}
+/* s2-p2-contents */
+.s2-p2-con-textbox1{
+    width: 30vw;  height: 30vh;   position: absolute; left:10vw;  top:20%;
+    display: flex;  flex-direction: column; gap:5vh;    opacity: 0;
+}
+.s2-p2-con-textbox2{
+    width: 20vw;    height: 30vh;   position: absolute; right: 3vw;    top:55%; 
+    display: flex;  flex-direction: column; box-sizing: border-box;    opacity: 0;
+}
+
+
+/* 섹션 3 */
+.section-3{
+    width: 100vw;   height: 230vh;  position: relative; box-sizing: border-box;
+}
+.s3-part1{
+    width: 55vw;    height: fit-content;  position: absolute;  right: 5vw;  color: white;
+    display: flex;  flex-direction: column;
+}
+.s3-part1 > span{
+    box-sizing: border-box; padding: 20px 0;    border-bottom: solid 1px white;
+}
+.s3-part1-lists{
+    box-sizing: border-box; padding: 20px 0;    border-bottom: solid 1px white;  display: flex;  gap:10vw;  width: 100%;    font-size: 0.8vw;   height: fit-content;
+    position: relative; overflow: hidden;
+}
+.s3-part2{
+    width: 55vw;    height: fit-content;  position: absolute; left: 5vw;    top:100vh;
+}
+.s3-part2-lists{
+    box-sizing: border-box; padding: 20px 0;    border-bottom: solid 1px white;  display: flex;  gap:10vw;  width: 100%;    font-size: 0.8vw;   height: fit-content;
+    position: relative; overflow: hidden;
+}
+
+
+.s3-part1-lists::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    transition: top 0.15s ease-in-out;
+}
+.s3-part1-lists:hover{color: black;}
+.s3-part1-lists:not(:hover)::before {
+    animation: divDown 0.15s ease-in-out forwards;
+}
+.s3-part1-lists:hover::before {
+    animation: divUp 0.15s ease-in-out forwards;
+}
+
+.s3-part2-lists::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    transition: top 0.15s ease-in-out;
+}
+.s3-part2-lists:hover{color: black;}
+.s3-part2-lists:not(:hover)::before {
+    animation: divDown 0.15s ease-in-out forwards;
+}
+.s3-part2-lists:hover::before {
+    animation: divUp 0.15s ease-in-out forwards;
+}
+
+/* 섹션 4 */
+.section-4{
+    width: 100vw;   height: 100vh;  position: relative; display: flex;
+}
+/* 섹션4 치어리더1 */
+.s4-title{
+    position: absolute; left: 10vw; top:15vh;   color: black;   font-size: 7vw;  font-weight: 200;
+    z-index: 3; margin: 0;
+}
+.s4-part1{
+    background: #bfccd8;  width: 80vw;   height: 100%;  position: relative;
+}
+.s4-p1-contents{
+    position: absolute;  left: 10vw; top:40vh; color: black;   font-size: 2vw; display: flex;  flex-direction: column;  gap:30px;
+    width: 25vw;
+}
+.s4-p1-c-text{
+    display: flex;  flex-direction: column; gap:10px;
+}
+.s4-p1-c-text > div{
+    display: flex;  gap:2vw;
+}
+.s4-p1-c-img{
+    width: 33vw;    height: 48vh;   position: absolute; right: 0;   bottom: 12vh;
+}
+
+/* 섹션4 치어리더2 */
+.s4-part2{
+    width: 14vw;    height: 100%;   background:#b692a1;  position: relative;    overflow: hidden;
+}
+.s4-p2-c-img{
+    width: 14vw;    height: 19vh;   position: absolute; right: 0;   bottom: 12vh;
+}
+
+/* 섹션4 치어리더3 */
+.s4-part3{
+    width: 6vw; height: 100%;   background:#e6e6e6;
+}
+.s4-p3-c-img{
+    width: 6vw; height: 9vh;    position: absolute; right: 0;   bottom: 12vh;
+}
+
+/* 섹션4 치어리더 */

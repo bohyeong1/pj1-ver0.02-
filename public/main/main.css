@@ -729,7 +729,7 @@ html, body {
 
 /* 섹션 4 */
 .section-4{
-    width: 100vw;   height: 100vh;  position: relative; display: flex;
+    width: 100vw;   height: 100vh;  position: relative;
 }
 /* 섹션4 치어리더1 */
 .s4-title{
@@ -737,9 +737,18 @@ html, body {
     z-index: 3; margin: 0;
 }
 .s4-part1{
-    background: #bfccd8;  width: 80vw;   height: 100%;  position: relative;
+    background: #bfccd8;  width: 80vw;   height: 100%;   display: flex;  box-sizing: border-box;   padding-bottom: 12vh;   justify-content: right;
+    align-items: flex-end;     overflow: hidden;    
+    position:absolute;  top:0; left:0;
 }
-.s4-p1-contents{
+/* 치어리더 text 공통 css */
+.s4-p-contents.active{
+    position: absolute;  right: 65vw; top:40vh; color: black;   font-size: 2vw; display: flex;  flex-direction: column;  gap:30px;
+    width: 25vw;
+}
+
+
+.s4-p-contents.first{
     position: absolute;  left: 10vw; top:40vh; color: black;   font-size: 2vw; display: flex;  flex-direction: column;  gap:30px;
     width: 25vw;
 }
@@ -750,23 +759,64 @@ html, body {
     display: flex;  gap:2vw;
 }
 .s4-p1-c-img{
-    width: 33vw;    height: 48vh;   position: absolute; right: 0;   bottom: 12vh;
+    width: 33vw;    height: 48vh; 
 }
 
 /* 섹션4 치어리더2 */
+.s4-part2-container{
+    position:absolute;  top:0; right:0;  width: 20vw;    height: 100%;   overflow: hidden; 
+}
 .s4-part2{
-    width: 14vw;    height: 100%;   background:#b692a1;  position: relative;    overflow: hidden;
+    width: 14vw;    height: 100%;   background:#b692a1;  top:0; right:6vw;  position: absolute;
+}
+.s4-p2-c-imgbox{
+    width: 14vw;    height: 19vh;   position: absolute; right: 0;   bottom: 12vh;   overflow: hidden;
 }
 .s4-p2-c-img{
-    width: 14vw;    height: 19vh;   position: absolute; right: 0;   bottom: 12vh;
+    width: 33vw;    height: 48vh;   position: absolute; bottom:0; right: 0;
 }
 
 /* 섹션4 치어리더3 */
+.s4-part3-container{
+    position:absolute;  top:0; right:0;  width: 6vw;    height: 100%;  overflow: hidden;
+}
 .s4-part3{
     width: 6vw; height: 100%;   background:#e6e6e6;
+    position:absolute;  top:0; right:0;
+}
+.s4-p3-c-imgbox{
+    width: 6vw;    height: 9vh;   position: absolute; right: 0;   bottom: 12vh;   overflow: hidden;
 }
 .s4-p3-c-img{
-    width: 6vw; height: 9vh;    position: absolute; right: 0;   bottom: 12vh;
+    width: 33vw;    height: 48vh;   position: absolute; bottom:0; right: 0;
 }
 
 /* 섹션4 치어리더 */
+.s4-part4-container{
+    position: absolute; top:0; right: 0;  width: 0;    height: 100%;   overflow: hidden; 
+}
+.s4-part4{
+    width: 6vw; height: 100%;   background:#e49366; 
+    position:absolute;  top:0; right:0;
+}
+.s4-p4-c-imgbox{
+    width: 0vw;    height: 0vh;   position: absolute; right: 0;   bottom: 12vh;   overflow: hidden;
+}
+.s4-p4-c-img{
+    width: 33vw;    height: 48vh;   position: absolute; bottom:0; right: 0;
+}
+
+/* 섹션5 치어리더 */
+.s4-part5-container{
+    position: absolute; top:0; right: 0;  width: 0;    height: 100%;   overflow: hidden; 
+}
+.s4-part5{
+    width: 6vw; height: 100%;   background:#798e7b;
+    position:absolute;  top:0; right:0;
+}
+.s4-p5-c-imgbox{
+    width: 0vw;    height: 0vh;   position: absolute; right: 0;   bottom: 12vh;   overflow: hidden;
+}
+.s4-p5-c-img{
+    width: 33vw;    height: 48vh;   position: absolute; bottom:0; right: 0;
+}

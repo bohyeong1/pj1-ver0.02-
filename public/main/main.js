@@ -4,7 +4,234 @@ function wait(time){
     return new Promise((res)=>{setTimeout(res, time)})
 }
 
-// ScrollSmoother 활성화 코드 및 스크롤 이벤트 등록
+
+//gnb라인
+
+const header = document.querySelector('header')
+const main_menu = document.querySelector('.main-menu')
+const menu_boxs = document.querySelectorAll('.manu-click-img > div')
+const menu_wrapper = document.querySelector('.menu-wrapper')
+const manu_click_btn = document.querySelector('.manu-click-btn')
+
+// gnb- 메뉴호버시 x만들기
+function animation_menu_boxs(){
+
+    menu_boxs[1].style.opacity = 0
+    menu_boxs[0].style.top = '11.5px'
+    menu_boxs[0].style.transform = 'rotateZ(45deg)'
+    menu_boxs[2].style.top = '11.5px'
+    menu_boxs[2].style.transform = 'rotateZ(-45deg)'
+}
+
+async function click_menu_tap(){
+    const menu_state = main_menu.getAttribute('state')
+
+    // 메뉴 열기
+    if(menu_state === 'false'){
+        menu_wrapper.style.display='block'
+        html.style.overflowY = 'hidden'
+        main_menu.setAttribute('state','true')
+
+        await appear_back_menu_box(160)
+        await display_menus(true)
+    }else{        //닫기
+        html.style.overflowY = 'visible'
+        main_menu.setAttribute('state','false')
+        await display_menus(false)
+        await appear_back_menu_box(0)
+        // menu_wrapper.style.opacity = 0
+        await wait(100)
+        menu_wrapper.style.display='none'
+    }
+
+}
+
+main_menu.addEventListener('mouseover', animation_menu_boxs)
+main_menu.addEventListener('click', click_menu_tap)
+
+///////////////메인메뉴 클릭시 뒷배경 디브 깔아놓기
+for (let i = 0; i < 12; i++){
+    const back_menu_box = document.createElement('div')
+    back_menu_box.className = 'back_menu_box'
+    back_menu_box.style.left = i*160 + 80 + 'px'
+    menu_wrapper.appendChild(back_menu_box)
+}
+
+// 메인메뉴 클릭시 촤라락 효과 내기
+async function appear_back_menu_box(width){
+    const back_boxs = menu_wrapper.querySelectorAll('.back_menu_box')
+    for(const box of back_boxs){
+        box.style.width = width + 'px'
+        await wait(100)
+    }
+}
+
+const menus = [
+    {
+        name : 'History',
+        url : '../eaglesMenu/history/history.html'
+    },
+    {
+        name : 'Mascot',
+        url : '../eaglesMenu/mascot/mascot.html'
+    },
+    {
+        name : 'Player',
+        url : '../playerMenu/player/player.html'
+    },
+    {
+        name : 'Gallery',
+        url : '../gallery/photo.html'
+    },
+]
+
+////메뉴 순서대로 opacity 조절해서 출력하기
+const root_menu_box = document.querySelector('.root_menu_box')
+async function display_menus(bool){
+    if(bool){
+        for(let data of menus){
+            root_menu_box.style.opacity = 1
+            const menu_list = document.createElement('div')
+            menu_list.className = 'menu_list'
+            menu_list.innerText = data.name
+            menu_list.onclick = function(){location.href=data.url}    
+            root_menu_box.appendChild(menu_list)
+            await wait(100)
+            menu_list.style.opacity = 1
+            await wait(100)        
+        }
+    }else{
+        root_menu_box.style.opacity = 0
+        await wait(100)
+        const menu_lists = document.querySelectorAll('.menu_list')
+        for(const menu of menu_lists){
+            menu.remove()
+        }
+    }
+}
+
+
+
+
+
+/////////////////////////로드 이벤트
+const root_wrapper = document.querySelector('.root_wrapper')
+
+async function disappearWrapper(){
+    root_wrapper.style.opacity = 0
+
+    await wait(700)
+    root_wrapper.remove()
+}
+
+
+
+
+window.addEventListener('load', disappearWrapper)
+
+
+
+
+
+////////////////////////////////////섹션1
+const s1_p2_t2_contents = document.querySelectorAll('.s1-p2-t2-contents')
+const s1_p2_t2_contents2 = document.querySelectorAll('.s1-p2-t2-contents2')
+const s1_mvbox_t1_span = document.querySelector('.s1-mvbox-t1-span')
+const s1_mvbox_t2_span = document.querySelector('.s1-mvbox-t2-span')
+const s1_text_box_wrapper2 = document.querySelector('.s1-text-box-wrapper2')
+const s1_text_box_wrapper3 = document.querySelector('.s1-text-box-wrapper3')
+
+///////////////////////////////////섹션2
+const sec2_title_spans = document.querySelectorAll('.newplayer-logo > span')
+const sec2_container1 = document.querySelector('.sec2-container1')
+const sec2_container2 = document.querySelector('.sec2-container2')
+const sec2_container3 = document.querySelector('.sec2-container3')
+const sec2_container4 = document.querySelector('.sec2-container4')
+const sec2_slogun_wrapper = document.querySelector('.sec2-slogun-wrapper')
+const sec2_content = document.querySelector('.sec2-content')
+//섹션2 플레이어
+const sec2_content_box1 = document.querySelector('.sec2-content-box1')
+const sec2_content_box2 = document.querySelector('.sec2-content-box2')
+const sec2_content_box3 = document.querySelector('.sec2-content-box3')
+const sec2_content_box4 = document.querySelector('.sec2-content-box4')
+
+const sec2_box1_img = document.querySelector('.sec2-box1-img')
+const sec2_box2_img = document.querySelector('.sec2-box2-img')
+const sec2_box3_img = document.querySelector('.sec2-box3-img')
+const sec2_box4_img = document.querySelector('.sec2-box4-img')
+////////////섹션2 text
+const title_name1 = document.querySelector('.sec2-text1-title-wrapper > .title-name')
+const text_text1 = document.querySelector('.s2-text1-wrapper > .text-text')
+const title_name2= document.querySelector('.sec2-text2-title-wrapper > .title-name')
+const text_text2 = document.querySelector('.s2-text2-wrapper > .text-text')
+const title_name3 = document.querySelector('.sec2-text3-title-wrapper > .title-name')
+const text_text3 = document.querySelector('.s2-text3-wrapper > .text-text')
+const title_name4 = document.querySelector('.sec2-text4-title-wrapper > .title-name')
+const text_text4 = document.querySelector('.s2-text4-wrapper > .text-text')
+
+////////////////섹션2 description
+const s2_des_span = document.querySelectorAll('.s1-text-box-wrapper > span')
+
+////섹2-하위logo
+async function displayTitle(bool){
+    if(bool){
+        sec2_container1.style.transform = 'translateY(-30vh)'
+        sec2_container2.style.transform = 'translateY(-50vh)'
+        sec2_container3.style.transform = 'translateY(-70vh)'
+        sec2_container4.style.transform = 'translateY(-90vh)'
+    
+        await wait(800)
+        sec2_slogun_wrapper.style.transform = 'translateY(-8vh)'
+    }else{
+        sec2_container1.style.transform = 'translateY(0)'
+        sec2_container2.style.transform = 'translateY(0)'
+        sec2_container3.style.transform = 'translateY(0)'
+        sec2_container4.style.transform = 'translateY(0)'
+        sec2_slogun_wrapper.style.transform = 'translateY(0)'
+    }
+
+}
+
+///섹2-상위logo
+async function display_sec2_logo(bool){
+    if(bool){
+        for(const span of sec2_title_spans){
+            await wait(100)
+            span.style.transform = 'translateY(-45vh)'
+        }
+    }else{
+        for(const span of sec2_title_spans){
+            await wait(100)
+            span.style.transform = 'translateY(0)'
+        }
+    }
+}
+
+
+
+
+///////////////////////////////////////////////////////////////섹션4
+// sec4-part2
+const s4_part2_container = document.querySelector('.s4-part2-container')
+const s4_part2 = document.querySelector('.s4-part2')
+const s4_p2_c_imgbox = document.querySelector('.s4-p2-c-imgbox')
+// sec4-part3
+const s4_part3_container = document.querySelector('.s4-part3-container')
+const s4_part3 = document.querySelector('.s4-part3')
+const s4_p3_c_imgbox = document.querySelector('.s4-p3-c-imgbox')
+// sec4-part4
+const s4_part4_container = document.querySelector('.s4-part4-container')
+const s4_part4 = document.querySelector('.s4-part4')
+const s4_p4_c_imgbox = document.querySelector('.s4-p4-c-imgbox')
+// sec4-part5
+const s4_part5_container = document.querySelector('.s4-part5-container')
+const s4_part5 = document.querySelector('.s4-part5')
+const s4_p5_c_imgbox = document.querySelector('.s4-p5-c-imgbox')
+
+
+
+
+///////////////////////////////////////////////////////////////////////////// ScrollSmoother 활성화 코드 및 스크롤 이벤트 등록
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -464,9 +691,42 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleActions: 'play none play reverse'
         }
     })
+    ////////////////////////////////////////////////////////////////////////////섹션3
+
+    ////////////////////////////////////////////////////////////////////////////섹션4
+    ScrollTrigger.create({
+        trigger:'.section-4',
+        start:'top top',
+        end:'+=300%',
+        pin:true,
+        pinSpacing:true
+    })
+
+    let sec4_part2 = gsap.timeline({
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1830%',
+            end:'+=80%',
+            scrub:true
+        }
+    })
+
+    //////////sec4 첫번째 에니메이션    
+    sec4_part2.to(s4_part2_container,{width:'100vw'},0)
+              .to(s4_part2,{width:'80vw', x:'-14vw'},0)
+              .to(s4_p2_c_imgbox,{width:'33vw', height:'48vh'},0)
+
+              .to(s4_part3_container,{width:'20vw'},0)
+              .to(s4_part3,{width:'14vw', x:'-6vw'},0)
+              .to(s4_p3_c_imgbox,{width:'14vw', height:'19vh'},0)
+
+              .to(s4_part4_container,{width:'6vw'},0)
+              .to(s4_part4,{width:'6vw'},0)
+              .to(s4_p4_c_imgbox,{width:'6vw',height:'9vh'},0)
+
 })
 
-
+console.log(s4_part3)
 
 
 
@@ -477,215 +737,6 @@ function refreshScrollTrigger(){
   }
 
 window.addEventListener('resize', refreshScrollTrigger)
-
-
-
-
-//gnb라인
-
-const header = document.querySelector('header')
-const main_menu = document.querySelector('.main-menu')
-const menu_boxs = document.querySelectorAll('.manu-click-img > div')
-const menu_wrapper = document.querySelector('.menu-wrapper')
-const manu_click_btn = document.querySelector('.manu-click-btn')
-
-// gnb- 메뉴호버시 x만들기
-function animation_menu_boxs(){
-
-    menu_boxs[1].style.opacity = 0
-    menu_boxs[0].style.top = '11.5px'
-    menu_boxs[0].style.transform = 'rotateZ(45deg)'
-    menu_boxs[2].style.top = '11.5px'
-    menu_boxs[2].style.transform = 'rotateZ(-45deg)'
-}
-
-async function click_menu_tap(){
-    const menu_state = main_menu.getAttribute('state')
-
-    // 메뉴 열기
-    if(menu_state === 'false'){
-        menu_wrapper.style.display='block'
-        html.style.overflowY = 'hidden'
-        main_menu.setAttribute('state','true')
-
-        await appear_back_menu_box(160)
-        await display_menus(true)
-    }else{        //닫기
-        html.style.overflowY = 'visible'
-        main_menu.setAttribute('state','false')
-        await display_menus(false)
-        await appear_back_menu_box(0)
-        // menu_wrapper.style.opacity = 0
-        await wait(100)
-        menu_wrapper.style.display='none'
-    }
-
-}
-
-main_menu.addEventListener('mouseover', animation_menu_boxs)
-main_menu.addEventListener('click', click_menu_tap)
-
-///////////////메인메뉴 클릭시 뒷배경 디브 깔아놓기
-for (let i = 0; i < 12; i++){
-    const back_menu_box = document.createElement('div')
-    back_menu_box.className = 'back_menu_box'
-    back_menu_box.style.left = i*160 + 80 + 'px'
-    menu_wrapper.appendChild(back_menu_box)
-}
-
-// 메인메뉴 클릭시 촤라락 효과 내기
-async function appear_back_menu_box(width){
-    const back_boxs = menu_wrapper.querySelectorAll('.back_menu_box')
-    for(const box of back_boxs){
-        box.style.width = width + 'px'
-        await wait(100)
-    }
-}
-
-const menus = [
-    {
-        name : 'History',
-        url : '../eaglesMenu/history/history.html'
-    },
-    {
-        name : 'Mascot',
-        url : '../eaglesMenu/mascot/mascot.html'
-    },
-    {
-        name : 'Player',
-        url : '../playerMenu/player/player.html'
-    },
-    {
-        name : 'Gallery',
-        url : '../gallery/photo.html'
-    },
-]
-
-////메뉴 순서대로 opacity 조절해서 출력하기
-const root_menu_box = document.querySelector('.root_menu_box')
-async function display_menus(bool){
-    if(bool){
-        for(let data of menus){
-            root_menu_box.style.opacity = 1
-            const menu_list = document.createElement('div')
-            menu_list.className = 'menu_list'
-            menu_list.innerText = data.name
-            menu_list.onclick = function(){location.href=data.url}    
-            root_menu_box.appendChild(menu_list)
-            await wait(100)
-            menu_list.style.opacity = 1
-            await wait(100)        
-        }
-    }else{
-        root_menu_box.style.opacity = 0
-        await wait(100)
-        const menu_lists = document.querySelectorAll('.menu_list')
-        for(const menu of menu_lists){
-            menu.remove()
-        }
-    }
-}
-
-
-
-
-
-/////////////////////////로드 이벤트
-const root_wrapper = document.querySelector('.root_wrapper')
-
-async function disappearWrapper(){
-    root_wrapper.style.opacity = 0
-
-    await wait(700)
-    root_wrapper.remove()
-}
-
-
-
-
-window.addEventListener('load', disappearWrapper)
-
-
-
-
-
-////////////////////////////////////섹션1
-// const section_1 = document.querySelector('.section-1')
-const s1_p2_t2_contents = document.querySelectorAll('.s1-p2-t2-contents')
-const s1_p2_t2_contents2 = document.querySelectorAll('.s1-p2-t2-contents2')
-const s1_mvbox_t1_span = document.querySelector('.s1-mvbox-t1-span')
-const s1_mvbox_t2_span = document.querySelector('.s1-mvbox-t2-span')
-const s1_text_box_wrapper2 = document.querySelector('.s1-text-box-wrapper2')
-const s1_text_box_wrapper3 = document.querySelector('.s1-text-box-wrapper3')
-
-///////////////////////////////////섹션2
-const sec2_title_spans = document.querySelectorAll('.newplayer-logo > span')
-const sec2_container1 = document.querySelector('.sec2-container1')
-const sec2_container2 = document.querySelector('.sec2-container2')
-const sec2_container3 = document.querySelector('.sec2-container3')
-const sec2_container4 = document.querySelector('.sec2-container4')
-const sec2_slogun_wrapper = document.querySelector('.sec2-slogun-wrapper')
-const sec2_content = document.querySelector('.sec2-content')
-//섹션2 플레이어
-const sec2_content_box1 = document.querySelector('.sec2-content-box1')
-const sec2_content_box2 = document.querySelector('.sec2-content-box2')
-const sec2_content_box3 = document.querySelector('.sec2-content-box3')
-const sec2_content_box4 = document.querySelector('.sec2-content-box4')
-
-const sec2_box1_img = document.querySelector('.sec2-box1-img')
-const sec2_box2_img = document.querySelector('.sec2-box2-img')
-const sec2_box3_img = document.querySelector('.sec2-box3-img')
-const sec2_box4_img = document.querySelector('.sec2-box4-img')
-////////////섹션2 text
-const title_name1 = document.querySelector('.sec2-text1-title-wrapper > .title-name')
-const text_text1 = document.querySelector('.s2-text1-wrapper > .text-text')
-const title_name2= document.querySelector('.sec2-text2-title-wrapper > .title-name')
-const text_text2 = document.querySelector('.s2-text2-wrapper > .text-text')
-const title_name3 = document.querySelector('.sec2-text3-title-wrapper > .title-name')
-const text_text3 = document.querySelector('.s2-text3-wrapper > .text-text')
-const title_name4 = document.querySelector('.sec2-text4-title-wrapper > .title-name')
-const text_text4 = document.querySelector('.s2-text4-wrapper > .text-text')
-
-////////////////섹션2 description
-const s2_des_span = document.querySelectorAll('.s1-text-box-wrapper > span')
-
-////섹2-하위logo
-async function displayTitle(bool){
-    if(bool){
-        sec2_container1.style.transform = 'translateY(-30vh)'
-        sec2_container2.style.transform = 'translateY(-50vh)'
-        sec2_container3.style.transform = 'translateY(-70vh)'
-        sec2_container4.style.transform = 'translateY(-90vh)'
-    
-        await wait(800)
-        sec2_slogun_wrapper.style.transform = 'translateY(-8vh)'
-    }else{
-        sec2_container1.style.transform = 'translateY(0)'
-        sec2_container2.style.transform = 'translateY(0)'
-        sec2_container3.style.transform = 'translateY(0)'
-        sec2_container4.style.transform = 'translateY(0)'
-        sec2_slogun_wrapper.style.transform = 'translateY(0)'
-    }
-
-}
-
-///섹2-상위logo
-async function display_sec2_logo(bool){
-    if(bool){
-        for(const span of sec2_title_spans){
-            await wait(100)
-            span.style.transform = 'translateY(-45vh)'
-        }
-    }else{
-        for(const span of sec2_title_spans){
-            await wait(100)
-            span.style.transform = 'translateY(0)'
-        }
-    }
-}
-
-
-
 
 
 

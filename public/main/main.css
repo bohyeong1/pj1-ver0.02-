@@ -791,7 +791,7 @@ html, body {
     width: 33vw;    height: 48vh;   position: absolute; bottom:0; right: 0;
 }
 
-/* 섹션4 치어리더 */
+/* 섹션4 치어리더4 */
 .s4-part4-container{
     position: absolute; top:0; right: 0;  width: 0;    height: 100%;   overflow: hidden; 
 }
@@ -806,7 +806,7 @@ html, body {
     width: 33vw;    height: 48vh;   position: absolute; bottom:0; right: 0;
 }
 
-/* 섹션5 치어리더 */
+/* 섹션4 치어리더5 */
 .s4-part5-container{
     position: absolute; top:0; right: 0;  width: 0;    height: 100%;   overflow: hidden; 
 }
@@ -819,4 +819,200 @@ html, body {
 }
 .s4-p5-c-img{
     width: 33vw;    height: 48vh;   position: absolute; bottom:0; right: 0;
+}
+
+/* 섹션4 진행률 div */
+.s4-progress{
+    position: absolute; left: 50%;  bottom: 3vh;    transform: translateX(-50%);    width: 80vw;    height: 6vh;
+    display: flex;  flex-direction: column; gap:2vh;
+}
+.s4-progress-text{
+    display: flex;  width: 100%;
+}
+.s4-pr-t-container{
+    flex: 1;    height: 100%;   overflow: hidden;
+}
+.s4-pr-t-item{
+    display: flex;  gap:1vw;    color: black;   font-size: 0.8vw;   height: 100%;
+}
+/* progress-bar */
+.s4-progress-bar{
+    width: 20%; height: 1px;    background: black;
+}
+
+
+
+/* 섹션 5 */
+.section-5{
+    width:100vw;
+    height:260vh;
+    box-sizing: border-box;
+    position: relative;
+    background:#798e7b;
+
+    box-sizing: border-box; padding-top: 20vh;
+}
+.sec5-container{
+    justify-content: space-between;    display: flex;    overflow: hidden;
+    width: 100%;    height: 100%;
+}
+.sec5-imgbox1,.sec5-imgbox3{
+    width:24%;
+    height:280vh;
+    overflow: hidden;
+    position: relative;
+    transition: 0.5s;
+}
+.sec5-imgbox2,.sec5-imgbox4{
+    width:24%;
+    height:350vh;
+    overflow: hidden;
+    position: relative;
+    transition: 0.5s;
+}
+.imgbox1-box,.imgbox2-box,.imgbox3-box,.imgbox4-box{
+    width:100%;
+    height:70vh;
+    margin-bottom: 2.5vh;
+
+}
+.imgbox1-box > img, .imgbox2-box > img, .imgbox3-box > img, .imgbox4-box > img{
+    width:100%;
+    height:100%;
+    object-fit: fill;
+
+}
+
+.sec5-imgbox2, .sec5-imgbox4{
+    top: -150vh;
+}
+
+
+
+/* 섹션 6 */
+.regend-logo{
+    width:80vw;
+    height:20vh;
+    position: absolute;
+    z-index: 4;
+    border-top-left-radius: 20px;
+    top:-19vh;
+    right: 0;
+    background: black;
+    box-sizing: border-box;
+    padding-left: 3vw;
+    color: white;
+    font-size: 8vw;
+    font-family: 'CoolGuy-Medium';
+    line-height: 25vh;
+    overflow: hidden;
+}
+.section-6{
+    width:100vw;
+    height:130vh;
+    position: relative;
+    background: black;    
+}
+.sec6-logo{
+    width:100%;
+    height:100vh;
+    position: relative;
+    top:20vh;
+    transition: 0.5s;
+}
+.sec6-container{
+    width:100%;
+    height:100vh;
+    display: flex;
+    position: relative;
+    top:20vh;
+}
+.sec6-con-box:nth-child(1),.sec6-con-box:nth-child(3),.sec6-con-box:nth-child(4){
+    position: relative;
+    width:20%;
+    height:100vh;
+    transition: 1s;
+}
+
+.sec6-con-box:nth-child(2){
+    position: relative;
+    width:40%;
+    height:100vh;
+    transition: 1s;
+}
+.sec6-content{
+    width:100%;
+    height:130vh;
+}
+
+#im-2{
+    width:100%;
+    height:100vh;
+    object-fit: fill;
+    opacity: 1;
+    transition: 0.8s;
+}
+#im-1,#im-3,#im-4{
+    width:100%;
+    height:100vh;
+    object-fit: fill;
+    opacity: 0;
+    transition: 0.8s;
+}
+.sec6-tex-wrapper{
+    width:13vw;
+    height:8vh;
+    overflow: hidden;
+    z-index: 3;
+    position: absolute;
+    top:20vh;
+
+}
+.sec6-tex{
+    width:100%;
+    height:100%;
+    font-size: 4vw;
+    color: #eaff00;
+    font-weight: bold;
+    font-family: 'CoolGuy-Medium';
+    line-height: 8vh;
+    padding-left: 1vw;
+    box-sizing: border-box;
+    transition: 0.4s;
+}
+
+
+
+.sec6-flow-container{
+    width:100%;
+    height:10vh;
+    position: relative;
+    top:3vh;
+}
+.sec6-flow-text {
+
+    display: flex;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: 0.3s;
+    font-size: 2.5vw;
+    font-weight:bold;
+    color: #9D9993;
+}
+
+.sec6-flow-wrap {
+  animation: textLoop 25s linear infinite;
+  padding-right: 1.4881vw;
+}
+
+@keyframes textLoop {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
 }

@@ -228,7 +228,8 @@ const s4_part5_container = document.querySelector('.s4-part5-container')
 const s4_part5 = document.querySelector('.s4-part5')
 const s4_p5_c_imgbox = document.querySelector('.s4-p5-c-imgbox')
 
-
+// progress
+const s4_pr_t_item = document.querySelectorAll('.s4-pr-t-item.active')
 
 
 ///////////////////////////////////////////////////////////////////////////// ScrollSmoother 활성화 코드 및 스크롤 이벤트 등록
@@ -697,7 +698,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ScrollTrigger.create({
         trigger:'.section-4',
         start:'top top',
-        end:'+=300%',
+        end:'+=350%',
         pin:true,
         pinSpacing:true
     })
@@ -724,10 +725,116 @@ document.addEventListener('DOMContentLoaded', function() {
               .to(s4_part4,{width:'6vw'},0)
               .to(s4_p4_c_imgbox,{width:'6vw',height:'9vh'},0)
 
+    ///////////////////sec4 두번째 에니메이션
+    let sec4_part3 = gsap.timeline({
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1910%',
+            end:'+=80%',
+            scrub:true
+        }
+    })
+
+    sec4_part3.to(s4_part3_container,{width:'100vw'},0)
+              .to(s4_part3,{width:'80vw', x:'-20vw'},0)
+              .to(s4_p3_c_imgbox,{width:'33vw', height:'48vh'},0)
+
+              .to(s4_part4_container,{width:'20vw'},0)
+              .to(s4_part4,{width:'14vw', x:'-6vw'},0)
+              .to(s4_p4_c_imgbox,{width:'14vw', height:'19vh'},0)
+
+              .to(s4_part5_container,{width:'6vw'},0)
+              .to(s4_part5,{width:'6vw'},0)
+              .to(s4_p5_c_imgbox,{width:'6vw',height:'9vh'},0)
+
+    /////////////////////sec4 세번째 에니메이션
+
+    let sec4_part4 = gsap.timeline({
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1990%',
+            end:'+=80%',
+            scrub:true
+        }
+    })
+
+    sec4_part4.to(s4_part4_container,{width:'100vw'},0)
+              .to(s4_part4,{width:'80vw', x:'-20vw'},0)
+              .to(s4_p4_c_imgbox,{width:'33vw', height:'48vh'},0)
+
+              .to(s4_part5_container,{width:'20vw'},0)
+              .to(s4_part5,{width:'20vw'},0)
+              .to(s4_p5_c_imgbox,{width:' 20vw', height:'30vh'},0)
+
+    ///////////////////////////////sec4 네번째 애니메이션
+    let sec4_part5 = gsap.timeline({
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'2070%',
+            end:'+=80%',
+            scrub:true
+        }
+    })
+
+    sec4_part5.to(s4_part5_container,{width:'100vw'},0)
+              .to(s4_part5,{width:'100vw'},0)
+              .to(s4_p5_c_imgbox,{width:'33vw', height:'48vh', x:'-20vw'},0)
+
+    ///////////////////////////////sec4 progress 에니메이션
+
+    gsap.to('.s4-progress-bar',{
+        width:'100%', 
+        ease:'linear',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'1830%',
+            end:'+=320%',
+            scrub:true
+        }
+    })
+
+    s4_pr_t_item.forEach((el, index)=>{
+        gsap.fromTo(el,{y:'100%'},{
+            y:0,
+            scrollTrigger:{
+                trigger:'#smooth-wrapper',
+                start:`${1830 + 80*index}%`,
+                end:'2150%',
+                duration:0.2,
+                onEnter:()=> gsap.to(el,{y:0, duration:0.2}),
+                onLeaveBack:()=> gsap.fromTo(el,{y:0},{y:'100%',duration:0.2})
+            }
+        })
+    })
+
+
+    ///////////////////////////////////////////////////////////////////////////////////섹션 5
+    const sec5_timeline = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.sec5-container',
+            start:'top bottom',
+            end:'bottom top',
+            scrub:1
+        }
+    })
+
+    sec5_timeline.to('.sec5-imgbox1',{y:'-25vh' ,ease:'linear'},0)
+                 .to('.sec5-imgbox3',{y:'-25vh' ,ease:'linear'},0)
+                 .to('.sec5-imgbox2',{y:'57vh' ,ease:'linear'},0)
+                 .to('.sec5-imgbox4',{y:'57vh' ,ease:'linear'},0)
+
+    ////////////////////////////////////////////////////////////////////////////////////섹션 6
+    gsap.to('.sec6-logo',{
+        y:'-20vh',
+        scrollTrigger:{
+            trigger:'.sec6-logo',
+            top:'top bottom',
+            end:'bottom top',
+            toggleActions:'play none none reverse'
+        }
+    })
+
 })
-
-console.log(s4_part3)
-
 
 
 

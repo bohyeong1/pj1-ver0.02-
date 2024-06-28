@@ -1,0 +1,28 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  font-size: 3em;
+}
+
+.hanwha {
+  left: 10vw;
+}
+
+.eagles {
+  left: 10vw;
+  opacity: 0;
+}

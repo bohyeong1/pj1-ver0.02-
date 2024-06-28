@@ -1,16 +1,6 @@
-.s1-videobox1{
-    display: flex;  flex-direction: column; gap:5px;
-    transform: translateZ(300px) rotateY(-20deg) rotateX(10deg);
-}
+.his-container{
 
-.s1-video1{
-    width: 800px;    height: 400px;
 }
-.s1-video1-1{
-    transform: rotateZ(180deg) rotateY(180deg);   width: 800px;    height: 400px;
-    opacity: 0.8;
-}
-.s1-shadow{
-    background: linear-gradient(to top, rgba(0, 0, 0, 15) 30%, transparent);
-    width: 800px; height: 500px;    position: absolute; bottom:0;
+.plain{
+    display: flex;
 }

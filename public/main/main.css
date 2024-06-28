@@ -529,6 +529,7 @@ html, body {
     height: 550vh;
     position: absolute; top:70vh;
     z-index: 2;
+    display: flex;  flex-direction: column;
 }
 #sec2-p-l-imgs{
     width: 100%;

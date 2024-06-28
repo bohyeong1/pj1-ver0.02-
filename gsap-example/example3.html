@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Box with Dynamic Background Color</title>
-    <link rel="stylesheet" href="example3.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Flip Example</title>
+<link rel="stylesheet" href="example3.css"></link>
 </head>
 <body>
-    <div class="s1-videobox1">
-        <iframe class="s1-video1" src="https://www.youtube.com/embed/9FDAD6YIUFU?si=XxfZzLyCTt7HQ5FG&autoplay=1&mute=1" frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <iframe class="s1-video1-1" src="https://www.youtube.com/embed/9FDAD6YIUFU?si=XxfZzLyCTt7HQ5FG&autoplay=1&mute=1" frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <div class="s1-shadow"></div>
-    </div>
-    <script src="example3.js"></script>
+  <div class="his-container plain">
+    <div class="his-container__letter H">H</div>
+    <div class="his-container__letter I">I</div>
+    <div class="his-container__letter S">S</div>
+    <div class="his-container__letter T">T</div>
+    <div class="his-container__letter O">O</div>
+    <div class="his-container__letter R">R</div>
+    <div class="his-container__letter Y">Y</div>
+    <div class="his-container__of">of</div>
+    <div class="his-container__eagles">EAGLES</div>
+  </div>
+
+  <button id="animateBtn">Animate</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Flip.min.js"></script>
+  <!-- <script>
+    const box = document.querySelector(".box");
+    document.getElementById("animateBtn").addEventListener("click", () => {
+      // Initial state
+      const state = Flip.getState(box);
+
+      // Change the element
+      box.classList.toggle("new-class");
+
+      // Animate to the final state
+      Flip.from(state, {
+        duration: 1,
+        ease: "power1.inOut"
+      });
+    });
+  </script> -->
 </body>
 </html>

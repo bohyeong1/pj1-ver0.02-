@@ -232,9 +232,31 @@ const s4_p5_c_imgbox = document.querySelector('.s4-p5-c-imgbox')
 const s4_pr_t_item = document.querySelectorAll('.s4-pr-t-item.active')
 
 
+/////////////////////////////////////////////////////////////////////////섹션6
+
+const sec6_con_box = document.querySelectorAll('.sec6-con-box')
+const sec6_img = document.querySelectorAll('.sec6-img')
+const sec6_tex = document.querySelectorAll('.sec6-tex')
+
+function extendContent(){
+
+    sec6_con_box.forEach((ele)=>{ele.style.width = '25%'})
+    sec6_img.forEach((ele)=>{ele.style.opacity = 0})
+    sec6_tex.forEach((ele)=>{ele.style.transform = 'translateY(0vh)'})
+
+    this.style.width = '40%'
+    this.childNodes[3].style.opacity = 1
+    this.childNodes[1].childNodes[1].style.transform = 'translateY(-8vh)'
+    this.childNodes[1].childNodes[3].style.transform = 'translateY(-8vh)'
+}
+sec6_con_box.forEach((ele)=>{ele.addEventListener('mouseover', extendContent)})
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////// ScrollSmoother 활성화 코드 및 스크롤 이벤트 등록
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -698,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ScrollTrigger.create({
         trigger:'.section-4',
         start:'top top',
-        end:'+=350%',
+        end:'+=320%',
         pin:true,
         pinSpacing:true
     })

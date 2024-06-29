@@ -1,13 +1,7 @@
 @font-face {
-    font-family: 'SUIT-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'TTHakgyoansimMulgyeolB';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimMulgyeolB.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
 }
 @font-face {
@@ -17,7 +11,7 @@
     font-style: normal;
 }
 body{
-    width:100vw;
+    width:100%;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -26,30 +20,10 @@ body{
     flex-direction: column;
     color: white;
     font-size: 1vw;
-    font-family: 'SUIT-Regular';
+    font-family: 'Pretendard-Regular';
     background: black;
-}
-.section-1{
-    width:100vw;
-    height:100vh;
-}
-.sec1-img{
-    object-fit: fill;
-    width:100%;
-    height:100%;
-    position:absolute;
 }
 
-/* 화면 온로드 시 wrapper */
-.root_wrapper{
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;  height: 100vh;
-    background: black;
-    transition: 0.6s;
-    z-index: 100;
-    overflow-x: hidden;
-}
 
 /* 메인메뉴 */
 .menu-container{
@@ -163,50 +137,35 @@ body{
 
 
 
-
-
-
-/* 컨텐츠박스 */
-.history-content{
-    position: absolute;
-    top:12.5vh;
-}
-
 /* 섹터1 */
-.sector1{
-    height:82.5vh;
-    display: flex;
-    padding-top: 15vh;
-    /* justify-content: center; */
+.his-sector1{
+    height:100vh;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    /* display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center; */
+    
+}
+.his-sector1__container{
+    position: absolute; left:50%; top:50%; transform: translate(-50%, -50%);
+}
+.his-sector1__container > p{
+    font-size: 6vw;
+    text-align: center;
+    margin: 0;
+    line-height: 0;
+    transform:translateY(80px);
+    opacity: 0;
+    /* font-family: 'CoolGuy-Medium'; */
+}
+.his-sector1__container > p:nth-child(5){
+    color:#e49366;
 }
 
-.text:nth-child(1){
-    width: 80%;
-    height:20%;
-    text-align: center;
-    font-size : 3vw;
-    transition: 0.4s;
-    font-family: 'SUIT-Regular';
-    color: white;
-}
-.text:nth-child(2){
-    width: 80%;
-    height:30%;
-    text-align: center;
-    font-size: 8vw;
-    font-family: 'TTHakgyoansimMulgyeolB';
-    color: white;
-    transition: 0.8s;
-}
-.textCanvas{
-    position: absolute;
-    left:0;
-    transform: translate(-50%);
-    top:0;
-    background: black;
-
+.his-sector1__display-logo{
+    box-sizing: border-box; margin-top: 10vh; 
 }
 
 /* 섹터2 */

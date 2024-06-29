@@ -1,15 +1,21 @@
-/////////////////////////로드 이벤트
-const root_wrapper = document.querySelector('.root_wrapper')
-
-async function disappearWrapper(){
-    root_wrapper.style.opacity = 0
-
-    await wait(700)
-    root_wrapper.remove()
+///////////////////////////유틸 함수
+function wait(time){
+    return new Promise((res) => setTimeout(res,time))
 }
 
-window.addEventListener('load', disappearWrapper)
+gsap.registerPlugin(ScrollSmoother,ScrollTrigger,SplitText)
 
+document.addEventListener('DOMContentLoaded', ()=>{
+
+    const smoother = ScrollSmoother.create({
+        wrapper:'#smooth-wrapper',
+        content:'#smooth-content',
+        smooth:1.5,
+        effects:true
+    })
+
+    sec1_load1()
+})
 
 
 
@@ -20,40 +26,43 @@ window.addEventListener('load', disappearWrapper)
 
 
 //sector1
-const textDiv = document.querySelectorAll('.text')
 
-texts = ['항상 최고를 추구하는','Hanwah Eeagles']
-
-let i = 0;
-
-const displayText = async() => {
-
-    for(let i=0; i<2; i++){
-    const text = texts[i].split('')
-    while(text.length){
-        if(i===1){
-            await wait(300)
-            textDiv[i].innerHTML += text.shift()
-        }else{
-            await wait(100)
-            textDiv[i].innerHTML += text.shift()
-        }        
-    }}
-
-    await wait(1400)
-        
-    textDiv[0].style.opacity = 0  
-    await wait(300)
-
-    textDiv[1].style.transform = 'translateY(-15vh)'
-
+function sec1_load1(){
+    const title_p = document.querySelectorAll('.his-sector1__container > p')
+    const titles = gsap.utils.toArray(title_p)
+    const titles_tl = gsap.timeline()
+    titles.forEach((el,index)=>{
+        const splitTitles = new SplitText(el,{type:'chars'})
+        //tq 하나하나 스타일주기 힘드네
+        splitTitles.chars.forEach((el)=>{
+            gsap.set(el,{opacity:0})
+        })
+            titles_tl
+            .to(splitTitles.chars,{
+                opacity:1,
+                y:-80,
+                stagger:0.05
+            },'<')
+            .to(el,{
+                opacity:1,
+            },'<')
+            .to(splitTitles.chars,{
+            opacity:0,
+            y:-160,
+            rotateX:90,
+            stagger:0.05
+            },'<1')  
+    })
 }
 
-function wait(time){
-    return new Promise(dum => setTimeout(dum,time))
-}
 
-setTimeout(displayText, 300)
+
+
+
+
+
+
+
 
 
 ////섹션3
@@ -189,6 +198,13 @@ const actImg = async(imgs)=>{
     boxImgBright(imgs[3])
 }
 
+
+
+
+
+
+
+
 /////////////////////////////scrollsmoother 등록
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 document.addEventListener('DOMContentLoaded',function(){
@@ -199,11 +215,6 @@ document.addEventListener('DOMContentLoaded',function(){
         effects: true  
     })
 })
-
-
-
-
-
 
 
 //////////////////////////마우스 호버 이벤트

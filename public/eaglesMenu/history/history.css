@@ -15,11 +15,12 @@
     src:url('../../../font/FjallaOne-Regular.ttf')
 }
 
+*{
+    box-sizing: border-box; margin:0; padding: 0;
+}
 body{
     width:100%;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -162,6 +163,9 @@ body{
     color:rgb(255, 102, 0);
 }
 /* sec1-display */
+.his-sector1__display-container{
+    width: 100%;    height: 100%;   opacity: 0; transition:2s;
+}
 .his-sector1__display-logo{
     box-sizing: border-box; margin-top: 10vh; 
 }
@@ -183,6 +187,7 @@ body{
     width: 50%;
     display: flex;
     box-sizing: border-box;
+    font-family:'eng-font';
 }
 .his-sector1__img > div{
     flex: 1;
@@ -248,133 +253,49 @@ body{
 
 
 /* 섹터2 */
-.sector2{
+.his-sector2{
     position:relative;
     width:100%;
-    height:100vh;
+    box-sizing: border-box;
+    padding-top: 30vh;
+    height:255vh;
+    display: flex;  flex-direction: column; align-items: center;
 }
-.sec2-box1{
-    position: absolute;
-    border : solid 1px white;
-    width:25%;
-    height:60%;
-    top:16vh;
-    left:7vw;
-    z-index: 2;
-    border-radius:10px ;
+.his-sector2__logo{
+    padding-bottom: 10vh;
 }
-#sec2-img{
-    width:90%;
-    height:40%;
-    left:1.25vw;
-    top:2vh;
-    object-fit: cover;
-    position: relative;
-    border-radius:10px ;
+.his-sector2__logo > h1{
+    font-family:'eng-font'; font-size: 7vw; margin: 0;  text-align: center; 
 }
-.sec2-box2,.sec2-box4,.sec2-box6{
-    width:88%;
-    height:50%;
-    position:relative;
-    top: 4vh;
-    left:1.25vw;
+.his-sector2__row{
+    background: #a9abb5;  width:0%; height: 1px; transform-origin: 50% 50%;
 }
-.sec2-box2>span,.sec2-box4>span,.sec2-box6>span{    
-    font-size: 1.8vw;
-    color: white;
+.his-sector2__column{
+    background: #a9abb5;  width:0.5px; height: 0%;
 }
-.sec2-box2>h2,.sec2-box4>h2,.sec2-box6>h2{
-    font-size:2vw;
-    color: white;
-}
-.sec2-box2>p,.sec2-box4>p,.sec2-box6>p{
-    position: relative;
-    top:-5vh;
-    font-size:1.2vw;
-    color: white;
-    line-height: 3vw;
+.his-sector2__container{
+    width: 100%;    height: 100%; display: flex;
 }
 
-.sec2-box3{
-    position: absolute;
-    border : solid 1px white;
-    width:25%;
-    height:60%;
-    top:16vh;
-    left:37.5vw;
-    z-index: 2;
-    border-radius:10px ;
+.his-sector2__img-container{
+    position: relative; overflow: hidden;  width: 100%; height: 62vh;
 }
-.sec2-box5{
-    position: absolute;
-    border : solid 1px white;
-    width:25%;
-    height:60%;
-    top:16vh;
-    right:7vw;
-    z-index: 2;
-    border-radius:10px ;
+.his-sector2__container-imgbox{
+    flex: 1;
 }
-.sec2-logo{
-    width: 100%;
-    height:12vh;
-    text-align: center;
-    font-size: 2vw;
-    line-height: 2vw;
+.his-sector2__container-imgbox{
+    padding: 3vh 2vw;   display: flex;  flex-direction: column; gap:2vh; 
 }
-
+.his-sector2__imgs{
+    object-fit: cover;  width: 100%;    position: absolute; transform-origin: 50% 50%;  transform:scale(1.5)
+}
 
 /* 섹터3 */
 .sector3{
     width:100%;
     height:150vh;
     position:relative;
-}
-.sec2-finalimg1{
-    width:100%;
-    height:15%;
-    position: relative;
-    top:-15vh;
-    overflow: hidden;
-}
-.finalimg1{
-    width:100vw;
-    height: 30vh;
-    position:relative;
-    left:0;
-    top:0;
-
-    transition: 1s;
-}
-.sec2-finalimg2{
-    width:100%;
-    height:15%;
-    position: absolute;
-    top:0;
-    overflow: hidden;
-}
-.finalimg2{
-    width:100vw;
-    height:30vh;
-    position:relative;
-    left:-50vw;
-    top:-15vh;
-    transition: 1s;
-}
-.sec2-finalimg3{
-    width:100%;
-    height:15%;
-    position: absolute;
-    top:0;
-    overflow: hidden;
-}
-.finalimg3{
-    width:100vw;
-    height:30vh;
-    position:relative;
-    left:50vw;
-    top:-15vh;
-    transition: 1s;
+    /* background: #EBD9C8; */
 }
 .sec3-logo{
     width: 50vw;

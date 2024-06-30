@@ -5,7 +5,7 @@ function wait(time){
 
 gsap.registerPlugin(ScrollSmoother,ScrollTrigger,SplitText)
 
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', async()=>{
 
     const smoother = ScrollSmoother.create({
         wrapper:'#smooth-wrapper',
@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     sec1_load1()
+    await wait(6000)        ////////foreach나 map을 await시키는 방법 없는지???
+    display_sec1()
 })
 
 
@@ -33,7 +35,6 @@ function sec1_load1(){
     const titles_tl = gsap.timeline()
     titles.forEach((el,index)=>{
         const splitTitles = new SplitText(el,{type:'chars'})
-        //tq 하나하나 스타일주기 힘드네
         splitTitles.chars.forEach((el)=>{
             gsap.set(el,{opacity:0})
         })
@@ -53,19 +54,15 @@ function sec1_load1(){
             stagger:0.05
             },'<1')  
     })
+
 }
 
 ////화면 display 에니메이션
-let animationsInitialized = false
 const his_sec1 = document.querySelector('.his-sector1')
 const animationTexts = his_sec1.querySelectorAll('p:not(.his-sector1__intro-text1):not(.his-sector1__text), .his-sector1__display-logo h1') ////에니메이션 주는 텍스트들
 const sec1_intro = document.querySelector('.his-sector1__intro-text1')   /////////인트로텍스트
 
 
-function display_sec1(){
-
-   
-}
 
 function suffleText(finalText, duration, callback){
     let i = 0
@@ -75,10 +72,8 @@ function suffleText(finalText, duration, callback){
         }
     })
 }
-
+////////sec1 text ani 랜덤글자
 function animateElement(){
-    if(animationsInitialized) return
-    animationsInitialized = true
 
     animationTexts.forEach((el)=>{
         let originalText = el.textContent
@@ -88,35 +83,33 @@ function animateElement(){
             if(index < originalText.length){
                 let suffledText=''
                 for(let i = 0; i <= index; i++){
-                    suffleText += 
+                    suffledText += 
                     i < index ? originalText[i] : Math.random().toString(36)[2]
                 }
                 el.textContent = suffledText + originalText.substring(index + 1)
                 index ++
             }else{
                 clearInterval(shuffleText)
-                ele.textContent = originalText
+                // console.log('확인')
+                el.textContent = originalText
             }
         },100)
     })
 }
 
-function intro_animation(){
-    let originalText = sec1_intro.textContent
-    let currentText = ''
-    let index = 0
 
-    const revealText = setInterval(()=>{
-        if(index < originalText.length){
-            currentText += originalText[index]
-            sec1_intro.textContent = currentText
-            index++
-        }else{
-            clearInterval(revealText)
-        }
-    },25)
+////////sec1 text ani 글자타이핑
+async function intro_animation(){
+    const sec1_intro_texts = ['This is Eagles History Page! Please enjoy your trip back in time']
+
+    const text = sec1_intro_texts[0].split('')
+    while(text.length){
+        await wait(50)
+        sec1_intro.innerHTML += text.shift()
+    }
 }
 
+////////sec1 img ani
 function img_animation(){
     const filters = document.querySelectorAll('.his-sector1__mainImg-filter')
     const clipValue = [
@@ -142,57 +135,97 @@ function img_animation(){
         })
     })
 }
+/// sec1 - display opacity 조정(시작부분)
+async function sec1_opacity(){
+    const his_sec1 = document.querySelector('.his-sector1__display-container')
+    his_sec1.style.opacity = 1 
+}
+
+// sec1 - display 이벤트
+async function display_sec1(){
+    sec1_opacity()
+    await wait(200)  //////다른방법없나?
+
+    img_animation()
+    intro_animation()
+    animateElement()   
+}
 
 
-img_animation()
 
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////sector 2
+const sector2_logo = document.querySelector('.his-sector2__logo h1')
 
+// sec2-logo text-ani
+function sec2_logoAni(){
+    const splitTexts = new SplitText(sector2_logo,{type:'chars'})
+        gsap.from(splitTexts.chars,{
+            opacity:0,
+            y:'50%',
+            stagger:0.05,
+            scrollTrigger:{
+                trigger:sector2_logo,
+                start:'bottom center+=20%',
+                end:'bottom bottom',
+
+            }
+        })
+}
+// sec2-line ani
+function sec2_lineAni(){
+    const row = document.querySelectorAll('.his-sector2__row')
+    const column = document.querySelector('.his-sector2__column')
+    gsap.to(row[0],{
+        width:'100%',
+        duration:2,
+        scrollTrigger:{
+            trigger:sector2_logo,
+            start:'bottom center+=20%',
+            end:'bottom bottom',
+        }
+    })
+    gsap.to(column,{
+        height:'100%',
+        duration:2,
+        scrollTrigger:{
+            trigger:sector2_logo,
+            start:'bottom center+=20%',
+            end:'bottom bottom',
+        }
+    })
+    gsap.to(row[1],{
+        width:'100%',
+        duration:2,
+        scrollTrigger:{
+            trigger:'.his-sector2',
+            start:'bottom center+=40%',
+            end:'bottom bottom',
+            // markers:true
+        }
+    })
+}
+
+// sec2-scroll enter ani
+function sec2_enterAni(){
+    sec2_logoAni()  //logo ani
+    sec2_lineAni() //line ani
+}
+
+sec2_enterAni()
 
 
 ////섹션3
 const html = document.querySelector('html')
-const finalimg2 = document.querySelector('.finalimg2')
-const finalimg1 = document.querySelector('.finalimg1')
-const finalimg3 = document.querySelector('.finalimg3')
-const sec3_logo = document.querySelector('.sec3-logo')
+
 
 const pixOfH = window.innerHeight/100
 let bool = true
 let functionBool ;
 
-window.addEventListener('scroll',()=>{
 
-    /////////////////////////섹션3 이벤트
-    if(html.scrollTop > 140*pixOfH){
-        finalimg2.style.left = 0
-        finalimg3.style.left = '100vw'
-        sec3_logo.style.left = '25vw'
-        sec3_logo.style.opacity = 1
-    }else{
-        finalimg2.style.left = '-50vw'
-        finalimg3.style.left = '50vw'
-        sec3_logo.style.left = '100vw'
-        sec3_logo.style.opacity = 0
-    }
-
-
-
-    ///////////////////////////////섹션4 이벤트
-    if(html.scrollTop>200*pixOfH){
-        if(bool){
-            functionBool = true
-            actCircle(circles)
-            actImg(box_imgs)
-            bool = false
-        }
-    }else if(html.scrollTop<200*pixOfH){
-        functionBool = false
-        bool = true
-    }
-})
 
 const video_boxs = document.querySelectorAll('.video-box')
 
@@ -205,7 +238,7 @@ const videoHover = async(e)=>{
         let src = innerVideo.getAttribute('src')
         innerVideo.src = `${src} + &autoplay=1&mute=1`
 
-        for(innerText of innerTexts){
+        for(let innerText of innerTexts){
             innerText.style.top = 0
             innerText.style.opacity=1
             await wait(70)
@@ -213,7 +246,7 @@ const videoHover = async(e)=>{
     }
 }
 
-for(video_box of video_boxs){
+for(let video_box of video_boxs){
 video_box.addEventListener('mouseenter', videoHover)
 video_box.addEventListener('mouseleave', async(e)=>{
     const innerTexts = e.target.querySelectorAll('.innerText')
@@ -225,7 +258,7 @@ video_box.addEventListener('mouseleave', async(e)=>{
         textInventory.splice(1,2)
 
         innerVideo.src = `${textInventory}`
-        for(innerText of innerTexts){
+        for(let innerText of innerTexts){
             innerText.style.top = '1vw'
             innerText.style.opacity=0
             await wait(70)

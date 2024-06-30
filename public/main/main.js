@@ -374,14 +374,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /////////////////////////////섹션 1 text2 에니메이션
     gsap.to('.s1-mvbox',{
-    scaleX:'6',
-    transformOrigin:'left',
-    scrollTrigger:{
-        trigger:'#smooth-wrapper',
-        start:'125%',
-        end:'300%',
-        scrub:true
-    }
+        scaleX:'6',
+        transformOrigin:'left',
+        scrollTrigger:{
+            trigger:'#smooth-wrapper',
+            start:'125%',
+            end:'300%',
+            scrub:true
+        }
     })
 
     const box2Ani = gsap.timeline({

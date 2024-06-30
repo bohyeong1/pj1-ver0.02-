@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 //sector1
-
+/////////텍스트 에니메이션
 function sec1_load1(){
     const title_p = document.querySelectorAll('.his-sector1__container > p')
     const titles = gsap.utils.toArray(title_p)
@@ -55,9 +55,96 @@ function sec1_load1(){
     })
 }
 
+////화면 display 에니메이션
+let animationsInitialized = false
+const his_sec1 = document.querySelector('.his-sector1')
+const animationTexts = his_sec1.querySelectorAll('p:not(.his-sector1__intro-text1):not(.his-sector1__text), .his-sector1__display-logo h1') ////에니메이션 주는 텍스트들
+const sec1_intro = document.querySelector('.his-sector1__intro-text1')   /////////인트로텍스트
 
 
+function display_sec1(){
 
+   
+}
+
+function suffleText(finalText, duration, callback){
+    let i = 0
+    const shuffleInterval = setInterval(()=>{
+        if(i<duration){
+
+        }
+    })
+}
+
+function animateElement(){
+    if(animationsInitialized) return
+    animationsInitialized = true
+
+    animationTexts.forEach((el)=>{
+        let originalText = el.textContent
+        let index = 0
+
+        const shuffleText = setInterval(()=>{
+            if(index < originalText.length){
+                let suffledText=''
+                for(let i = 0; i <= index; i++){
+                    suffleText += 
+                    i < index ? originalText[i] : Math.random().toString(36)[2]
+                }
+                el.textContent = suffledText + originalText.substring(index + 1)
+                index ++
+            }else{
+                clearInterval(shuffleText)
+                ele.textContent = originalText
+            }
+        },100)
+    })
+}
+
+function intro_animation(){
+    let originalText = sec1_intro.textContent
+    let currentText = ''
+    let index = 0
+
+    const revealText = setInterval(()=>{
+        if(index < originalText.length){
+            currentText += originalText[index]
+            sec1_intro.textContent = currentText
+            index++
+        }else{
+            clearInterval(revealText)
+        }
+    },25)
+}
+
+function img_animation(){
+    const filters = document.querySelectorAll('.his-sector1__mainImg-filter')
+    const clipValue = [
+        'polygon(10% 0, 0 0, 0 100%, 10% 100%)',
+        'polygon(20% 0, 10% 0, 10% 100%, 20% 100%)',
+        'polygon(30% 0, 20% 0, 20% 100%, 30% 100%)',
+        'polygon(40% 0, 30% 0, 30% 100%, 40% 100%)',
+        'polygon(50% 0, 40% 0, 40% 100%, 50% 100%)',
+        'polygon(60% 0, 50% 0, 50% 100%, 60% 100%)',
+        'polygon(70% 0, 60% 0, 60% 100%, 70% 100%)',
+        'polygon(80% 0, 70% 0, 70% 100%, 80% 100%)',
+        'polygon(90% 0, 80% 0, 80% 100%, 90% 100%)',
+        'polygon(100% 0, 90% 0, 90% 100%, 100% 100%)'
+    ]
+
+    setTimeout(()=>{
+        filters.forEach((filter, index)=>{
+            gsap.to(filter,{
+                clipPath:clipValue[index%clipValue.length],
+                duration:1,
+                delay: index * 0.1
+            })
+        })
+    })
+}
+
+
+img_animation()
 
 
 
@@ -149,54 +236,6 @@ video_box.addEventListener('mouseleave', async(e)=>{
 
 
 //////////////////////////////sector4
-const circles = document.querySelectorAll('.circle')
-const sector4 = document.querySelector('.sector4')
-const box_imgs = document.querySelectorAll('.box-img')
-const rotateCircle = async(element)=>{
-    let ceta = 0
-    let radianCeta
-    let x 
-    let y 
-    browserWidth = window.innerWidth
-    pixOfW = browserWidth/100
-    
-    while(functionBool){
-        radianCeta = ceta*Math.PI/180
-        x=Math.cos(radianCeta)*3
-        y= Math.sin(radianCeta)*3
-        element.style.left = `${2.8+x}vw`
-        element.style.top = `${2.8+y}vw`
-        ceta++
-        await wait(Math.random()*30)      
-    }    
-}
-
-const actCircle = async(elements)=>{
-     
-    for(element of elements){       
-        rotateCircle(element)
-        await wait(600)
-    }
-}
-
-const boxImgBright = async(img)=>{
-    
-    while(functionBool){
-    img.style = 'filter: brightness(0) saturate(100%) invert(32%) sepia(94%) saturate(4209%) hue-rotate(19deg) brightness(92%) contrast(97%)'
-    await wait(1000)
-    img.style = 'filter: invert(100%) sepia(52%) saturate(20%) hue-rotate(315deg)'
-    await wait(1000)}    
-}
-
-const actImg = async(imgs)=>{
-    boxImgBright(imgs[0])
-    boxImgBright(imgs[2])
-    boxImgBright(imgs[4])
-
-    await wait(1000)
-    boxImgBright(imgs[1])
-    boxImgBright(imgs[3])
-}
 
 
 

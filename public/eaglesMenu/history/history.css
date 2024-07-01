@@ -27,7 +27,7 @@ body{
     color: white;
     font-size: 1vw;
     font-family: 'Pretendard-Regular';
-    background: black;
+    background-color: black;
 }
 
 
@@ -265,7 +265,7 @@ body{
     padding-bottom: 10vh;
 }
 .his-sector2__logo > h1{
-    font-family:'eng-font'; font-size: 7vw; margin: 0;  text-align: center; 
+    font-family:'eng-font'; font-size: 7vw; text-align: center; 
 }
 .his-sector2__row{
     background: #a9abb5;  width:0%; height: 1px; transform-origin: 50% 50%;
@@ -276,9 +276,11 @@ body{
 .his-sector2__container{
     width: 100%;    height: 100%; display: flex;
 }
-
+.his-sec2__img-wrapper, .his-sector2-text-container{
+  width: 100%; height: 62vh;
+}
 .his-sector2__img-container{
-    position: relative; overflow: hidden;  width: 100%; height: 62vh;
+    width: 100%;    height: 100%;    position: relative; overflow: hidden;
 }
 .his-sector2__container-imgbox{
     flex: 1;
@@ -287,15 +289,60 @@ body{
     padding: 3vh 2vw;   display: flex;  flex-direction: column; gap:2vh; 
 }
 .his-sector2__imgs{
-    object-fit: cover;  width: 100%;    position: absolute; transform-origin: 50% 50%;  transform:scale(1.5)
+    object-fit: cover;  width: 100%;  height: 100%;  position: absolute; transform-origin: 50% 50%;  transform:scale(1.5)
 }
 
+
+
+/* sec3-preview */
+.his-s3-preview{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+.his-s3-preview__logo{
+    position: relative; left: 50%;  top:50%; transform: translate(-50%, -50%);
+}
+.his-s3-preview__logo > h1{
+    font-size: 7vw;    font-family:'eng-font';  text-align: center;
+}
+.his-s3-preview__year{
+    font-family:'eng-font';  text-align: center;    position:absolute;  padding: 5vh 4vw;   left:0; top:25vh;   font-size: 2vw;
+    z-index: 3;
+}
+
+
+.his-s3-preview__fk-wrapper{
+    width: 100%;    height: 100%;   overflow: hidden;   position: absolute; top:0; left:0;
+}
+.his-s3-preview__fakelogo{
+    position: absolute; width: 50%;    height: 100%;   background: black;  color: white;   top:0; 
+    z-index: 2;
+}
+.his-s3-preview__fakelogo > h1{
+    font-size: 7vw;    font-family:'eng-font';
+}
+.his-s3-preview__fakelogo.part1{
+    left:0; overflow: hidden;
+}
+.his-s3-preview__fakelogo.part2{
+    right: 0; overflow: hidden;
+}
+.his-s3-preview__fakelogo.part1 > h1{
+    position: absolute; top:50%;    right: 0;   transform: translate(50%,-50%);
+}
+.his-s3-preview__fakelogo.part2 > h1{
+    position: absolute; top:50%;    left: 0;   transform: translate(-50%,-50%);
+}
+
+
+
+
 /* 섹터3 */
-.sector3{
+.his-sector3{
     width:100%;
-    height:150vh;
+    height:fit-content;
     position:relative;
-    /* background: #EBD9C8; */
 }
 .sec3-logo{
     width: 50vw;
@@ -316,7 +363,7 @@ body{
     padding: 1vw;
     width:28vw;
     height:50vh;
-    border:solid 1px white;
+    border:solid 1px black;
     position: relative;
 }
 .video-wrapper{
@@ -348,7 +395,7 @@ body{
     opacity: 0;
     transition: 0.3s;
     font-family: 'SUIT-Regular';
-    color:orange;
+    color:rgb(255, 102, 0);
 }
 .innerVideo{
     width:25.5vw;
@@ -363,4 +410,51 @@ body{
 }
 
 
+/* sec4 */
+.his-sector4{
+    width: 100%;  height: 150vh;   padding-top: 30vh;
+}
+.his-sector4__logo > h1{
+    font-size: 7vw; text-align: center;    font-family:'eng-font';
+}
 
+.his-sector4__container{
+    display: flex;  width: 100%;    height: 100%;   padding: 3vh 4vw;
+}
+.his-sector4__lg-players{
+    width: 100%;    height: 65%;   background: #e9e3dd; border: solid 1px #a9abb5;
+    position: relative; 
+    padding: 2vh 1vw;
+}
+.his-sector4__lg-player-wrapper{
+    width: 23%; height: 100%;  filter: grayscale(100%);    transition: 0.3s;
+    z-index: 3;
+}
+.his-sector4__lg-player-wrapper:hover{
+    filter: grayscale(0);
+}
+.his-sector4__lg-player-box{
+    width: 100; height: 100%;
+}
+.his-sector4__lg-img{
+    width: 100%;    height: 100%;   object-fit:fill;
+}
+
+/* 클릭 시 변경되는 class */
+.his-s4-default{
+    display: flex;  justify-content: space-between;
+}
+
+.his-s4-active{
+    display: flex;  gap:2vw;
+}
+
+.his-s4-img-active{
+    width: 5vw;    height: 15vh;
+}
+
+/* s4 description */
+.his-sector4__description{
+    width: 40%; height: calc(100% - 4vh);   position: absolute;
+    right: 1vw; top:2vh;    background: beige;    z-index: 2;
+}

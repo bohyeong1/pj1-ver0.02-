@@ -63,15 +63,6 @@ const animationTexts = his_sec1.querySelectorAll('p:not(.his-sector1__intro-text
 const sec1_intro = document.querySelector('.his-sector1__intro-text1')   /////////인트로텍스트
 
 
-
-function suffleText(finalText, duration, callback){
-    let i = 0
-    const shuffleInterval = setInterval(()=>{
-        if(i<duration){
-
-        }
-    })
-}
 ////////sec1 text ani 랜덤글자
 function animateElement(){
 
@@ -158,6 +149,8 @@ async function display_sec1(){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////sector 2
 const sector2_logo = document.querySelector('.his-sector2__logo h1')
+const sec2_imgContainer = document.querySelectorAll('.his-sector2__img-container')
+
 
 // sec2-logo text-ani
 function sec2_logoAni(){
@@ -208,29 +201,110 @@ function sec2_lineAni(){
     })
 }
 
+// sec2-img ani
+function sec2_imgAni(){
+    sec2_imgContainer.forEach((el)=>{
+        gsap.from(el,{
+            height:0,
+            scrollTrigger:{
+                trigger:el,
+                start:'top center',
+                end:'top top',
+                scrub:true,
+                // markers:true
+            }
+        })
+    })
+
+}
+
 // sec2-scroll enter ani
 function sec2_enterAni(){
     sec2_logoAni()  //logo ani
     sec2_lineAni() //line ani
+    sec2_imgAni()   //img scroll ani
 }
 
 sec2_enterAni()
 
 
-////섹션3
-const html = document.querySelector('html')
 
 
-const pixOfH = window.innerHeight/100
-let bool = true
-let functionBool ;
 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////// sec3-privew
+//change background
+function s3_priview_changeBack(){
+    gsap.to('body',{
+        scrollTrigger:{
+            trigger:'.his-s3-preview',
+            start:'top top+=25%',
+            onEnter:()=>{gsap.to('body',{backgroundColor:'#EBD9C8', color:'black', duration:0.5,})},
+            onLeaveBack:()=>{gsap.to('body',{backgroundColor:'black',color:'white', duration:0.5})},
+            // markers:true
+        }
+    })
+
+    ScrollTrigger.create({
+        trigger:'.his-s3-preview',
+        start:'top top+=5%',
+        end:'+=45%',
+        pin:'.his-s3-preview__logo'
+    })
+}
+
+// break back
+function s3_priview_breakBack(){
+    ScrollTrigger.create({
+        trigger:'.his-s3-preview',
+        start:'top bottom',
+        // markers:true,
+        onLeaveBack:()=>{
+            gsap.to('.his-s3-preview__fakelogo',{
+                rotation:0,
+                y:0
+            })
+        }
+    })
+    ScrollTrigger.create({
+        trigger:'.his-s3-preview',
+        start:'top top+=25%',
+        // markers:true,
+        onEnter:()=>{
+            gsap.to('.his-s3-preview__fakelogo.part1',{
+                rotation:-30,
+                y:'130%',
+                duration:1.5
+            })
+            gsap.to('.his-s3-preview__fakelogo.part2',{
+                rotation:40,
+                y:'130%',
+                duration:1.5
+            })
+        }
+    })
+
+}
+
+
+//s3-priview enter ani
+function s3_pr_enterAni(){
+    s3_priview_changeBack()
+    s3_priview_breakBack()
+}
+s3_pr_enterAni()
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////섹션3
 
 
 const video_boxs = document.querySelectorAll('.video-box')
 
-
-const videoHover = async(e)=>{
+async function videoHover(e){
 
     const innerTexts = e.target.querySelectorAll('.innerText')
     const innerVideo = e.target.querySelector('.innerVideo')
@@ -268,13 +342,64 @@ video_box.addEventListener('mouseleave', async(e)=>{
 
 
 
-//////////////////////////////sector4
 
+///////////////////////////////////////////////////////////////////////////////섹션4
 
+// sec4 logo ani
+function sec4_logoAni(){
+    const sec4_logo = document.querySelector('.his-sector4__logo h1')
+    const texts = new SplitText(sec4_logo,{type:'chars'})
+    // console.log(texts.chars)
 
+    gsap.from(texts.chars,{
+        y:'50%',
+        opacity:0,
+        stagger:0.05,
+        scrollTrigger:{
+            trigger:sec4_logo,
+            start:'top bottom-=30%',
+            // markers:true
+        }
+    })
+}
 
+//sec4 click img ani
 
+let s4_imgToggle = false
+function sec4_cl_imgAni(){
+    const classNames = ['his-s4-default','his-s4-active']
+    const targetWrappers = document.querySelectorAll('.his-sector4__lg-player-wrapper')   ///target 
+    const container = document.querySelector('.his-sector4__lg-players')            ///container
+    const target_array = gsap.utils.toArray(targetWrappers)
+    target_array.forEach((el)=>{
+        el.addEventListener('click',(e)=>{
+            if(!s4_imgToggle){s4_imgToggle = true} 
+            const class_name = container.className.split(' ')[1]
+            container.classList.remove(class_name)
+            container.classList.add(s4_imgToggle ? classNames[1] : classNames[0])
 
+            target_array.forEach((el)=>{
+                if (el === e.currentTarget) {
+                    if(el.className.includes('his-s4-img-active')){
+                        el.classList.remove('his-s4-img-active')
+                    }
+                    el.style.filter = 'grayscale(0)'
+                } else {
+                    el.classList.add('his-s4-img-active')
+                    el.style.filter = 'grayscale(100%)'
+                }
+            })
+        })
+    })
+}
+
+// sec4 enter ani
+function sec4_enterAni(){
+    sec4_logoAni()
+    sec4_cl_imgAni()
+}
+
+sec4_enterAni()
 
 
 /////////////////////////////scrollsmoother 등록
